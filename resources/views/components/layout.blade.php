@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image/x-icon" href="{{ asset('/dist/img/mps-logo.png') }}">
+    <link rel="icon" type="image/x-icon" href="{{ asset('dist/img/mps-logo.png') }}">
     <title>MPS | @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}" />
+    {{--  <!-- DataTables -->  --}}
+    {{--  <link rel="stylesheet" href="{{ asset('plugins/datatables/dataTables.bootstrap.css') }}" />  --}}
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -31,8 +32,12 @@
     <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css') }}">
     <!-- Daterange picker -->
     <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
-    <!-- bootstrap wysihtml5 - text editor -->
+
     <link rel="stylesheet" href="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+
 
 </head>
 
@@ -66,7 +71,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="{{ asset('public/dist/img/user2-160x160.jpg') }}"
+                                                    <img src="{{ asset('dist/img/user2-160x160.jpg') }}"
                                                         class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
@@ -80,7 +85,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="{{ asset('/dist/img/user3-128x128.jpg') }}"
+                                                    <img src="{{ asset('dist/img/user3-128x128.jpg') }}"
                                                         class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
@@ -121,20 +126,39 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="{{ route('dashboard') }}">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                        <a href="">
+                            <i class="fa fa-dashboard"></i> <span>Home</span>
                         </a>
                     </li>
 
-                    <li>
+                    {{--  <li>
                         <a href="{{ route('permits.index') }}">
                             <i class="fa fa-pie-chart"></i> <span>Permits</span>
                         </a>
+                    </li>  --}}
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-clipboard"></i>
+                            <span>Permits</span>
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="{{ route('permits.index') }}"><i class="fa fa-circle-o"></i> Work Permits</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>Approvals</a></li>
+                            {{--  <li><a href=""><i class="fa fa-circle-o"></i>Jobs</a></li>  --}}
+                        </ul>
                     </li>
 
                     <li>
                         <a href="">
-                            <i class="fa fa-line-chart"></i> <span>Analytics & Reports</span>
+                            <i class="fa fa-briefcase"></i> <span>Jobs</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('users.index') }}">
+                            <i class="fa fa-users"></i> <span>Users</span>
                         </a>
                     </li>
 
@@ -160,12 +184,10 @@
     </div>
     <!-- ./wrapper -->
 
-
-    <!-- jQuery 2.2.0 -->
+    {{--  <!-- jQuery 2.2.0 -->  --}}
     <script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
-    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    {{--  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>  --}}
 
     <script>
         $.widget.bridge('uibutton', $.ui.button);
@@ -181,7 +203,7 @@
     <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
     <script src="{{ asset('plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
     <!-- jQuery Knob Chart -->
-    <script src="{{ asset('public/plugins/knob/jquery.knob.js') }}"></script>
+    <script src="{{ asset('plugins/knob/jquery.knob.js') }}"></script>
     <!-- daterangepicker -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
     <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
@@ -189,7 +211,7 @@
     <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
     <!-- Bootstrap WYSIHTML5 -->
     <script src="{{ asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
-    <!-- DataTables -->
+    {{--  <!-- DataTables -->  --}}
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 
@@ -205,17 +227,38 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
 
     <script>
-        $(function() {
-            $("#example1").DataTable();
-            $("#example2").DataTable({
-                paging: true,
-                lengthChange: false,
-                searching: false,
-                ordering: true,
-                info: true,
-                autoWidth: false,
-            });
-        });
+        {{--  new DataTable('#example', {
+            info: true,
+            ordering: true,
+            paging: true,
+            autoWidth: true
+        });  --}}
+        new DataTable('#example');
+        {{--  new DataTable('#example', {
+            columns: [{
+                    data: ''
+                },
+
+                {
+                    data: 'name'
+                },
+                {
+                    data: 'position'
+                },
+                {
+                    data: 'office'
+                },
+                {
+                    data: 'age'
+                },
+                {
+                    data: 'start_date'
+                },
+                {
+                    data: 'salary'
+                }
+            ]
+        });  --}}
     </script>
 
 

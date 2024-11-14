@@ -14,9 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('components.layout');
-})->name('dashboard');
+    return view('login');
+})->name('login');
 
 Route::get('/permits', function () {
     return view('permits.index');
 })->name('permits.index');
+Route::get('/permits/create', function () {
+    return view('permits.create');
+})->name('permits.create');
+
+Route::get('/users', function () {
+    return view('users.index');
+})->name('users.index');
