@@ -46,7 +46,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
 
-                        <table id="example" class="display" style="width:100%">
+                        <table id="example" class="display nowrap" style="width:100%">
                             <thead>
                                 <tr>
                                     <th></th>

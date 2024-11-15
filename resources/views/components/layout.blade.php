@@ -38,10 +38,59 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
 
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="{{ asset('plugins/timepicker/bootstrap-timepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/datepicker/datepicker3.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
+
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker-bs3.css') }}">
+
+
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
+
+    <style>
+        .select2-container .select2-selection--single {
+            height: 34px;
+            border: 1px solid #ccc;
+        }
+
+        .select2-container--default .select2-selection--single {
+            border-radius: 0 !important;
+        }
+
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+            background-color: #3c8dbc;
+            border-color: #367fa9;
+            padding: 1px 10px;
+            color: #fff;
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            /* border: 1px solid #d2d6de; */
+            border-radius: 0;
+        }
+
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: solid #ccc 1px;
+            outline: 0;
+        }
+
+        .select2-container .select2-selection--multiple {
+            /* box-sizing: border-box;
+            cursor: pointer;
+            display: block; */
+            min-height: 32px !important;
+            /* user-select: none;
+            -webkit-user-select: none; */
+        }
+    </style>
+
 
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini fixed">
     <div class="wrapper">
 
         <header class="main-header">
@@ -50,10 +99,19 @@
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini">MPS</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg" style="font-size: medium;">Meridian Port Services</span>
+                <span class="logo-lg" style="font-size: small;">Meridian Port Services</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
+                {{-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a> --}}
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
 
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
@@ -143,7 +201,8 @@
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ route('permits.index') }}"><i class="fa fa-circle-o"></i> Work Permits</a>
+                            <li><a href="{{ route('permits.index') }}"><i class="fa fa-circle-o"></i> Work
+                                    Permits</a>
                             </li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Approvals</a></li>
                             {{--  <li><a href=""><i class="fa fa-circle-o"></i>Jobs</a></li>  --}}
@@ -187,7 +246,7 @@
     {{--  <!-- jQuery 2.2.0 -->  --}}
     <script src="{{ asset('plugins/jQuery/jQuery-2.2.0.min.js') }}"></script>
     <!-- jQuery UI 1.11.4 -->
-    {{--  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>  --}}
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
     <script>
         $.widget.bridge('uibutton', $.ui.button);
@@ -215,6 +274,20 @@
     <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
 
+    <!-- bootstrap datepicker -->
+    <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <!-- bootstrap color picker -->
+    <script src="{{ asset('plugins/colorpicker/bootstrap-colorpicker.min.js') }}"></script>
+    <!-- bootstrap time picker -->
+    <script src="{{ asset('plugins/timepicker/bootstrap-timepicker.min.js') }}"></script>
+
+    <!-- date-range-picker -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <script src="{{ asset('plugins/daterangepicker/daterangepicker.js') }}"></script>
+
+    <!-- Select2 -->
+    <script src="{{ asset('plugins/select2/select2.full.min.js') }}"></script>
+
     <!-- Slimscroll -->
     <script src="{{ asset('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
     <!-- FastClick -->
@@ -227,38 +300,52 @@
     <script src="{{ asset('dist/js/demo.js') }}"></script>
 
     <script>
-        {{--  new DataTable('#example', {
-            info: true,
-            ordering: true,
-            paging: true,
-            autoWidth: true
-        });  --}}
-        new DataTable('#example');
-        {{--  new DataTable('#example', {
-            columns: [{
-                    data: ''
-                },
+        $(".select2").select2();
+        new DataTable('#example', {
+            scrollX: true
+        });
 
-                {
-                    data: 'name'
-                },
-                {
-                    data: 'position'
-                },
-                {
-                    data: 'office'
-                },
-                {
-                    data: 'age'
-                },
-                {
-                    data: 'start_date'
-                },
-                {
-                    data: 'salary'
-                }
-            ]
-        });  --}}
+        $('#reservationtime').daterangepicker({
+            timePicker: true,
+            timePickerIncrement: 30,
+            format: 'MM/DD/YYYY h:mm A'
+        });
+
+
+
+
+        // new DataTable('#example', {
+        //     info: true,
+        //     ordering: true,
+        //     paging: true,
+        //     autoWidth: true
+        // });
+        // new DataTable('#example');
+        //  new DataTable('#example', {
+        //     columns: [{
+        //             data: ''
+        //         },
+
+        //         {
+        //             data: 'name'
+        //         },
+        //         {
+        //             data: 'position'
+        //         },
+        //         {
+        //             data: 'office'
+        //         },
+        //         {
+        //             data: 'age'
+        //         },
+        //         {
+        //             data: 'start_date'
+        //         },
+        //         {
+        //             data: 'salary'
+        //         }
+        //     ]
+        // });
     </script>
 
 
