@@ -22,6 +22,7 @@
 
     <!-- Main content -->
     <section class="content">
+
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
@@ -29,16 +30,12 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-default btn-flat"><a
-                                            href="{{ route('permits.create') }}"><b>Create</b></a></button>
-                                    <button type="button" class="btn btn-default btn-flat"><i
-                                            class="fa fa-align-center"></i></button>
-                                    <button type="button" class="btn btn-default btn-flat"><i
-                                            class="fa fa-align-right"></i></button>
+                                    <button type="button" class="btn btn-default btn-flat">
+                                        <a href="{{ route('users.create') }}"><b>Add user</b></a>
+                                    </button>
+
                                 </div>
-                                {{--  <a href="" class="btn btn-default btn-sm btn-flat text-center">
-                                    <strong> Create</strong>
-                                </a>  --}}
+
                             </div>
                         </div>
 

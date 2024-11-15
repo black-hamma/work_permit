@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,7 @@ Route::get('/permits/create', function () {
     return view('permits.create');
 })->name('permits.create');
 
-Route::get('/users', function () {
-    return view('users.index');
-})->name('users.index');
+
+Route::get('/user', [UserController::class, 'index'])->name('users.index');
+Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
+Route::post('/user/store', [UserController::class, 'store'])->name('users.store');

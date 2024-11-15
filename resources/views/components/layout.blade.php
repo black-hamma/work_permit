@@ -103,12 +103,7 @@
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
-                {{-- <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a> --}}
+
                 <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
@@ -215,10 +210,25 @@
                         </a>
                     </li>
 
-                    <li>
-                        <a href="{{ route('users.index') }}">
-                            <i class="fa fa-users"></i> <span>Users</span>
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-gears"></i>
+                            <span>Settings</span>
+                            <i class="fa fa-angle-left pull-right"></i>
                         </a>
+                        <ul class="treeview-menu">
+                            <li>
+                                <a href="{{ route('users.index') }}">
+                                    <i class="fa fa-circle-o"></i>
+                                    Users
+                                </a>
+                            </li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>Hazard Identification</a></li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>Job Requirements</a></li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>PPE Requirements</a></li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>Precautionary Measures</a></li>
+                            {{--  <li><a href=""><i class="fa fa-circle-o"></i>Jobs</a></li>  --}}
+                        </ul>
                     </li>
 
                 </ul>
