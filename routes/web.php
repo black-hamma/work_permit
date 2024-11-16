@@ -28,4 +28,4 @@ Route::get('/permits/create', function () {
 
 Route::get('/user', [UserController::class, 'index'])->name('users.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
-Route::post('/user/store', [UserController::class, 'store'])->name('users.store');
+Route::post('/user', [UserController::class, 'store'])->name('users.store');
