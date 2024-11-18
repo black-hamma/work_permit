@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-6 col-md-4">
                                     <div class="form-group">
-                                        <label>Access Level</label>
+                                        <label>Role</label>
                                         <select class="form-control select2" name="access" style="width: 100%; ">
                                             <option selected="selected" value="User">User</option>
                                             <option value="HSSE">HSSE</option>

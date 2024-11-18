@@ -78,12 +78,33 @@
         }
 
         .select2-container .select2-selection--multiple {
-            /* box-sizing: border-box;
-            cursor: pointer;
-            display: block; */
             min-height: 32px !important;
-            /* user-select: none;
-            -webkit-user-select: none; */
+
+        }
+
+        .datepicker table tr td.active:hover,
+        .datepicker table tr td.active:hover:hover,
+        .datepicker table tr td.active.disabled:hover,
+        .datepicker table tr td.active.disabled:hover:hover,
+        .datepicker table tr td.active:focus,
+        .datepicker table tr td.active:hover:focus,
+        .datepicker table tr td.active.disabled:focus,
+        .datepicker table tr td.active.disabled:hover:focus,
+        .datepicker table tr td.active:active,
+        .datepicker table tr td.active:hover:active,
+        .datepicker table tr td.active.disabled:active,
+        .datepicker table tr td.active.disabled:hover:active,
+        .datepicker table tr td.active.active,
+        .datepicker table tr td.active:hover.active,
+        .datepicker table tr td.active.disabled.active,
+        .datepicker table tr td.active.disabled:hover.active,
+        .open .dropdown-toggle.datepicker table tr td.active,
+        .open .dropdown-toggle.datepicker table tr td.active:hover,
+        .open .dropdown-toggle.datepicker table tr td.active.disabled,
+        .open .dropdown-toggle.datepicker table tr td.active.disabled:hover {
+            color: #ffffff;
+            background: #285e8e;
+            border-color: #285e8e;
         }
     </style>
 
@@ -210,10 +231,12 @@
                         </a>
                     </li>
 
+                    <li class="header">MANAGEMENT</li>
+
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-gears"></i>
-                            <span>Settings</span>
+                            <span>Basic</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
@@ -223,6 +246,10 @@
                                     Users
                                 </a>
                             </li>
+                            {{--  <li><a href=""><i class="fa fa-circle-o"></i>Roles </a></li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>Project </a></li>  --}}
+                            <li><a href=""><i class="fa fa-circle-o"></i>Location </a></li>
+                            <li><a href=""><i class="fa fa-circle-o"></i>Department </a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Hazard Identification</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Job Requirements</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>PPE Requirements</a></li>
@@ -309,6 +336,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
 
+
     <script>
         $(".select2").select2();
         new DataTable('#example', {
@@ -321,7 +349,34 @@
             format: 'MM/DD/YYYY h:mm A'
         });
 
+        //Date picker
+        $('#datepicker').datepicker({
+            autoclose: true
+        });
+        $('#Edatepicker').datepicker({
+            autoclose: true
+        });
 
+        $('.extra-fields-customer').click(function() {
+            $('.customer_records').clone().appendTo('.customer_records_dynamic');
+            $('.customer_records_dynamic .customer_records').addClass('single remove');
+            $('.single .extra-fields-customer').remove();
+            $('.single').append('<a href="#" class="remove-field btn-remove-customer">Remove Fields</a>');
+            $('.customer_records_dynamic > .single').attr("class", "remove");
+
+            $('.customer_records_dynamic input').each(function() {
+                var count = 0;
+                var fieldname = $(this).attr("name");
+                $(this).attr('name', fieldname + count);
+                count++;
+            });
+
+        });
+
+        $(document).on('click', '.remove-field', function(e) {
+            $(this).parent('.remove').remove();
+            e.preventDefault();
+        });
 
 
         // new DataTable('#example', {
