@@ -106,6 +106,42 @@
             background: #285e8e;
             border-color: #285e8e;
         }
+
+        #usernames {
+            width: 100%;
+            padding: 6px;
+            margin-bottom: 5px;
+            border-radius: 0px !important;
+            border: 1px solid #cecece;
+        }
+
+        #usernames:focus {
+            border-radius: 0px !important;
+            border: 0px !important;
+            outline: .5px solid #367fa9;
+
+        }
+
+        .username-tag {
+            display: inline-block;
+            background-color: #367fa9;
+            color: #fff;
+            border-radius: 3px;
+            padding: 3px 25px 3px 10px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .remove-btn {
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            position: absolute;
+            {{--  top: 2px;
+            right: 2px;  --}}
+        }
     </style>
 
 
@@ -411,6 +447,51 @@
         //         }
         //     ]
         // });
+
+
+
+        const inputField = document.getElementById('usernames');
+        const usernameTagsContainer = document.getElementById('username-tags');
+        const usernameList = [];
+
+        // Function to render usernames
+        const renderUsernames = () => {
+            usernameTagsContainer.innerHTML = ''; // Clear the container
+            usernameList.forEach((username, index) => {
+                const tag = document.createElement('div');
+                tag.className = 'username-tag';
+                tag.textContent = username;
+
+                // Add a remove button
+                const removeBtn = document.createElement('span');
+                removeBtn.className = 'remove-btn';
+                removeBtn.textContent = '×';
+                removeBtn.addEventListener('click', () => removeUsername(index));
+
+                // Append remove button and tag
+                tag.appendChild(removeBtn);
+                usernameTagsContainer.appendChild(tag);
+            });
+        };
+
+        // Function to add a username
+        inputField.addEventListener('keydown', event => {
+            if (event.key === 'Enter' && inputField.value.trim() !== '') {
+                event.preventDefault(); // Prevent form submission
+                const newUsername = inputField.value.trim();
+                if (!usernameList.includes(newUsername)) {
+                    usernameList.push(newUsername);
+                    renderUsernames();
+                }
+                inputField.value = ''; // Clear the input field
+            }
+        });
+
+        // Function to remove a username
+        const removeUsername = index => {
+            usernameList.splice(index, 1); // Remove the username at the given index
+            renderUsernames();
+        };
     </script>
 
 
@@ -440,6 +521,9 @@
             </form>
         </div>
     </div> --}}
+
+
+
 
 
 </body>

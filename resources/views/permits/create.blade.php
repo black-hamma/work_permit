@@ -203,7 +203,14 @@
                                             <div class="customer_records_dynamic"></div>
 
                                         </div>  --}}
-                                            <textarea class="form-control" rows="2" placeholder="Enter names separated by commas..."></textarea>
+
+                                            <div id="username-container">
+                                                <input type="text" id="usernames" name="workers_names[]"
+                                                    placeholder="Type a name and press Enter" />
+                                                <div id="username-tags"></div>
+                                            </div>
+
+                                            {{--  <textarea class="form-control" rows="2" placeholder="Enter names separated by commas..."></textarea>  --}}
                                         </div>
 
                                     </div>
@@ -253,8 +260,8 @@
                                 <div class="col-md-12">
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox1">
+                                            <input class="form-check-input" type="checkbox"
+                                                name="hazard_identification[]" value="Fall from height" id="checkbox1">
                                             <label class="form-check-label" for="checkbox1">
                                                 Fall from height
                                             </label>
@@ -262,7 +269,8 @@
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox"
+                                                name="hazard_identification[]" value="Hazardous substance"
                                                 id="checkbox2">
                                             <label class="form-check-label" for="checkbox2">
                                                 Hazardous substance
