@@ -163,25 +163,19 @@
                                                 placeholder="Name of Receiver">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="contract_company">Contract Company / MPS
-                                                            Employer</label>
-                                                        <input type="text" class="form-control" id="contract_company"
-                                                            placeholder="Contract Company / MPS Employer">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="staff_id">Staff ID</label>
-                                                        <input type="text" class="form-control" id="staff_id"
-                                                            placeholder="Staff ID">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="contract_company">Contract Company / MPS
+                                                Employer</label>
+                                            <input type="text" class="form-control" id="contract_company"
+                                                placeholder="Contract Company / MPS Employer">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="staff_id">Staff ID</label>
+                                            <input type="text" class="form-control" id="staff_id"
+                                                placeholder="Staff ID">
                                         </div>
                                     </div>
 
@@ -205,9 +199,10 @@
                                         </div>  --}}
 
                                             <div id="username-container">
-                                                <input type="text" id="usernames" name="workers_names[]"
+                                                <input type="text" id="usernames"
                                                     placeholder="Type a name and press Enter" />
                                                 <div id="username-tags"></div>
+                                                <input type="hidden" name="workers_names" id="usernamesArray" />
                                             </div>
 
                                             {{--  <textarea class="form-control" rows="2" placeholder="Enter names separated by commas..."></textarea>  --}}

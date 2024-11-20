@@ -112,14 +112,13 @@
             padding: 6px;
             margin-bottom: 5px;
             border-radius: 0px !important;
-            border: 1px solid #cecece;
+            border: 1px solid #ccc;
         }
 
         #usernames:focus {
             border-radius: 0px !important;
-            border: 0px !important;
-            outline: .5px solid #367fa9;
-
+            border: 1px solid #3c8dbc;
+            outline: none;
         }
 
         .username-tag {
@@ -139,8 +138,6 @@
             cursor: pointer;
             font-weight: bold;
             position: absolute;
-            {{--  top: 2px;
-            right: 2px;  --}}
         }
     </style>
 
@@ -452,44 +449,43 @@
 
         const inputField = document.getElementById('usernames');
         const usernameTagsContainer = document.getElementById('username-tags');
+        const usernamesArrayField = document.getElementById('usernamesArray');
         const usernameList = [];
 
-        // Function to render usernames
         const renderUsernames = () => {
-            usernameTagsContainer.innerHTML = ''; // Clear the container
+            usernameTagsContainer.innerHTML = '';
             usernameList.forEach((username, index) => {
                 const tag = document.createElement('div');
                 tag.className = 'username-tag';
                 tag.textContent = username;
 
-                // Add a remove button
                 const removeBtn = document.createElement('span');
                 removeBtn.className = 'remove-btn';
                 removeBtn.textContent = '×';
                 removeBtn.addEventListener('click', () => removeUsername(index));
 
-                // Append remove button and tag
                 tag.appendChild(removeBtn);
                 usernameTagsContainer.appendChild(tag);
             });
+
+            // Sync the hidden input field with the array
+            usernamesArrayField.value = JSON.stringify(usernameList);
         };
 
-        // Function to add a username
         inputField.addEventListener('keydown', event => {
             if (event.key === 'Enter' && inputField.value.trim() !== '') {
-                event.preventDefault(); // Prevent form submission
+                event.preventDefault();
                 const newUsername = inputField.value.trim();
                 if (!usernameList.includes(newUsername)) {
                     usernameList.push(newUsername);
                     renderUsernames();
                 }
-                inputField.value = ''; // Clear the input field
+                inputField.value = '';
             }
         });
 
-        // Function to remove a username
         const removeUsername = index => {
-            usernameList.splice(index, 1); // Remove the username at the given index
+            usernameList.splice(index, 1);
             renderUsernames();
         };
     </script>

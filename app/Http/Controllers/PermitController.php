@@ -16,6 +16,10 @@ class PermitController extends Controller
     }
     public function store(Request $request)
     {
-        return $request;
+
+        $workers_names = json_decode($request->input('workers_names'), true);
+
+        dd($request);
+
     }
 }
