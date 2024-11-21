@@ -30,10 +30,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-default btn-flat">
-                                        <a href="{{ route('users.create') }}"><b>Add user</b></a>
-                                    </button>
-
+                                    <a href="{{ route('users.create') }}" class="add-new-link">
+                                        <i class="fa fa-plus"></i>
+                                        <b>ADD USER</b>
+                                    </a>
                                 </div>
 
                             </div>

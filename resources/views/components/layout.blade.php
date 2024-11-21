@@ -139,6 +139,36 @@
             font-weight: bold;
             position: absolute;
         }
+
+        .add-new-link {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            /* outline: 1px solid #007bff; */
+            padding: 5px 10px;
+            border-radius: 2px;
+
+        }
+
+        .add-new-link i {
+            font-size: 12px !important;
+            margin-top: 2px;
+        }
+
+        .add-new-link:hover {
+            color: #367fa9;
+            outline: 1px solid #367fa9;
+            /* Darker shade on hover */
+        }
+
+        @media screen and (max-width: 767px) {
+            div.dt-container div.dt-layout-row:not(.dt-layout-table) {
+                display: flex;
+            }
+        }
     </style>
 
 

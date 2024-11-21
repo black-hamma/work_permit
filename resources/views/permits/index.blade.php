@@ -30,8 +30,10 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group btn-group-sm">
-                                    <button type="button" class="btn btn-default btn-flat"><a
-                                            href="{{ route('permits.create') }}"><b>Create</b></a></button>
+
+                                    <a href="{{ route('permits.create') }}" class="add-new-link">
+                                        <i class="fa fa-plus"></i><b>CREATE</b>
+                                    </a>
 
                                 </div>
                                 {{--  <a href="" class="btn btn-default btn-sm btn-flat text-center">

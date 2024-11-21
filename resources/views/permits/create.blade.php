@@ -133,8 +133,6 @@
                                 </div>
                             </div>
 
-
-
                         </div>
                         <!-- /.box-body -->
                         <div class="box-header with-border text-blue">
@@ -202,7 +200,7 @@
                                                 <input type="text" id="usernames"
                                                     placeholder="Type a name and press Enter" />
                                                 <div id="username-tags"></div>
-                                                <input type="hidden" name="workers_names" id="usernamesArray" />
+                                                <input type="hidden" name="workers_names[]" id="usernamesArray" />
                                             </div>
 
                                             {{--  <textarea class="form-control" rows="2" placeholder="Enter names separated by commas..."></textarea>  --}}
@@ -211,8 +209,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="exampleInputFile">Risk Assessment / Job Safety Analysis</label>
-                                            <input type="file" id="exampleInputFile">
+                                            <label for="risk_assessment">Risk Assessment / Job Safety Analysis</label>
+                                            <input type="file" id="risk_assessment" name="risk_assessment">
 
                                             <p class="help-block">Select file to upload here.</p>
                                         </div>
@@ -275,161 +273,9 @@
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox3">
+                                                id="checkbox3" name="hazard_identification[]">
                                             <label class="form-check-label" for="checkbox3">
                                                 Buried services
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox4">
-                                            <label class="form-check-label" for="checkbox4">
-                                                Gas / Fumes
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox5">
-                                            <label class="form-check-label" for="checkbox5">
-                                                Environmental pollution
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
-                                                High/Low Temp
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
-                                                Lone working
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="overhead_service">
-                                            <label class="form-check-label" for="overhead_service">
-                                                Overhead service
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="oxygen_deficiency">
-                                            <label class="form-check-label" for="oxygen_deficiency">
-                                                Oxygen deficiency
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="adverse_weather">
-                                            <label class="form-check-label" for="adverse_weather">
-                                                Adverse weather
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="improper_communication">
-                                            <label class="form-check-label" for="improper_communication">
-                                                Improper communication
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="falling">
-                                            <label class="form-check-label" for="falling">
-                                                container falling from truck
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="noise">
-                                            <label class="form-check-label" for="noise">
-                                                Noise
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="poor_lighting">
-                                            <label class="form-check-label" for="poor_lighting">
-                                                Poor Lighting
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="slip">
-                                            <label class="form-check-label" for="slip">
-                                                Slip/Trip/Fall
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
                                             </label>
                                         </div>
                                     </div>
@@ -452,180 +298,82 @@
                                 <div class="col-md-12">
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox1">
-                                            <label class="form-check-label" for="checkbox1">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements1"
+                                                id="job_requirements1" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements1">
                                                 Fall from height
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox2">
-                                            <label class="form-check-label" for="checkbox2">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements2"
+                                                id="job_requirements2" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements2">
                                                 Hazardous substance
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox3">
-                                            <label class="form-check-label" for="checkbox3">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements3"
+                                                id="job_requirements3" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements3">
                                                 Buried services
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox4">
-                                            <label class="form-check-label" for="checkbox4">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements4"
+                                                id="job_requirements4" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements4">
                                                 Gas / Fumes
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox5">
-                                            <label class="form-check-label" for="checkbox5">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements5"
+                                                id="job_requirements5" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements5">
                                                 Environmental pollution
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements6"
+                                                id="job_requirements6" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements6">
                                                 High/Low Temp
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements8"
+                                                id="job_requirements8" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements8">
                                                 Lone working
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="overhead_service">
-                                            <label class="form-check-label" for="overhead_service">
+                                            <input class="form-check-input" type="checkbox" value="job_requirement9"
+                                                id="job_requirement9" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirement9">
                                                 Overhead service
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="oxygen_deficiency">
-                                            <label class="form-check-label" for="oxygen_deficiency">
+                                            <input class="form-check-input" type="checkbox" value="job_requirements7"
+                                                id="job_requirements7" name="job_requirements[]">
+                                            <label class="form-check-label" for="job_requirements7">
                                                 Oxygen deficiency
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="adverse_weather">
-                                            <label class="form-check-label" for="adverse_weather">
-                                                Adverse weather
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="improper_communication">
-                                            <label class="form-check-label" for="improper_communication">
-                                                Improper communication
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="falling">
-                                            <label class="form-check-label" for="falling">
-                                                container falling from truck
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="noise">
-                                            <label class="form-check-label" for="noise">
-                                                Noise
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="poor_lighting">
-                                            <label class="form-check-label" for="poor_lighting">
-                                                Poor Lighting
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="slip">
-                                            <label class="form-check-label" for="slip">
-                                                Slip/Trip/Fall
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
                                             </label>
                                         </div>
                                     </div>
@@ -648,183 +396,59 @@
                                 <div class="col-md-12">
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox1">
-                                            <label class="form-check-label" for="checkbox1">
+                                            <input class="form-check-input" type="checkbox" value="ppe_requirements1"
+                                                id="ppe_requirements1" name="ppe_requirements[]">
+                                            <label class="form-check-label" for="ppe_requirements1">
                                                 Fall from height
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox2">
-                                            <label class="form-check-label" for="checkbox2">
+                                            <input class="form-check-input" type="checkbox" value="ppe_requirements2"
+                                                id="ppe_requirements2" name="ppe_requirements[]">
+                                            <label class="form-check-label" for="ppe_requirements2">
                                                 Hazardous substance
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox3">
-                                            <label class="form-check-label" for="checkbox3">
+                                            <input class="form-check-input" type="checkbox" value="ppe_requirements3"
+                                                id="ppe_requirements3" name="ppe_requirements[]">
+                                            <label class="form-check-label" for="ppe_requirements3">
                                                 Buried services
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox4">
-                                            <label class="form-check-label" for="checkbox4">
+                                            <input class="form-check-input" type="checkbox" value="ppe_requirements4"
+                                                id="ppe_requirements4" name="ppe_requirements[]">
+                                            <label class="form-check-label" for="ppe_requirements4">
                                                 Gas / Fumes
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox5">
-                                            <label class="form-check-label" for="checkbox5">
+                                            <input class="form-check-input" type="checkbox" value="ppe_requirements5"
+                                                id="ppe_requirements5" name="ppe_requirements[]">
+                                            <label class="form-check-label" for="ppe_requirements5">
                                                 Environmental pollution
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
+                                            <input class="form-check-input" type="checkbox" value="ppe_requirements6"
+                                                id="ppe_requirements6" name="ppe_requirements[]">
+                                            <label class="form-check-label" for="ppe_requirements6">
                                                 High/Low Temp
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
-                                                Lone working
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="overhead_service">
-                                            <label class="form-check-label" for="overhead_service">
-                                                Overhead service
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="oxygen_deficiency">
-                                            <label class="form-check-label" for="oxygen_deficiency">
-                                                Oxygen deficiency
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="adverse_weather">
-                                            <label class="form-check-label" for="adverse_weather">
-                                                Adverse weather
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="improper_communication">
-                                            <label class="form-check-label" for="improper_communication">
-                                                Improper communication
-                                            </label>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="falling">
-                                            <label class="form-check-label" for="falling">
-                                                container falling from truck
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="noise">
-                                            <label class="form-check-label" for="noise">
-                                                Noise
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="poor_lighting">
-                                            <label class="form-check-label" for="poor_lighting">
-                                                Poor Lighting
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="slip">
-                                            <label class="form-check-label" for="slip">
-                                                Slip/Trip/Fall
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
-                                            </label>
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>
@@ -843,180 +467,80 @@
                                 <div class="col-md-12">
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox1">
-                                            <label class="form-check-label" for="checkbox1">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure0" id="precautionary_measure0"
+                                                name="precautionary_measure[]">
+                                            <label class="form-check-label" for="precautionary_measure0">
                                                 Fall from height
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox2">
-                                            <label class="form-check-label" for="checkbox2">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure1" id="precautionary_measure1"
+                                                name="precautionary_measure[]">
+                                            <label class="form-check-label" for="precautionary_measure1">
                                                 Hazardous substance
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox3">
-                                            <label class="form-check-label" for="checkbox3">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure2" id="precautionary_measure2"
+                                                name="precautionary_measure[]">
+                                            <label class="form-check-label" for="precautionary_measure2">
                                                 Buried services
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox4">
-                                            <label class="form-check-label" for="checkbox4">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure3" id="precautionary_measure3">
+                                            <label class="form-check-label" for="precautionary_measure3">
                                                 Gas / Fumes
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox5">
-                                            <label class="form-check-label" for="checkbox5">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure4" id="precautionary_measure4"
+                                                name="precautionary_measure[]">
+                                            <label class="form-check-label" for="precautionary_measure4">
                                                 Environmental pollution
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure5" id="precautionary_measure5"
+                                                name="precautionary_measure[]">
+                                            <label class="form-check-label" for="precautionary_measure5">
                                                 High/Low Temp
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox6">
-                                            <label class="form-check-label" for="checkbox6">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure6" id="precautionary_measure6"
+                                                name="precautionary_measure[]">
+                                            <label class="form-check-label" for="precautionary_measure6">
                                                 Lone working
                                             </label>
                                         </div>
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="overhead_service">
-                                            <label class="form-check-label" for="overhead_service">
+                                            <input class="form-check-input" type="checkbox"
+                                                value="precautionary_measure7" id="precautionary_measure7"
+                                                name="precautionary_measure[]">
+                                            <label class="form-check-label" for="precautionary_measure7">
                                                 Overhead service
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="oxygen_deficiency">
-                                            <label class="form-check-label" for="oxygen_deficiency">
-                                                Oxygen deficiency
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="adverse_weather">
-                                            <label class="form-check-label" for="adverse_weather">
-                                                Adverse weather
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="improper_communication">
-                                            <label class="form-check-label" for="improper_communication">
-                                                Improper communication
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="falling">
-                                            <label class="form-check-label" for="falling">
-                                                container falling from truck
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="noise">
-                                            <label class="form-check-label" for="noise">
-                                                Noise
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="sharp_object">
-                                            <label class="form-check-label" for="sharp_object">
-                                                Sharp object
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="poor_lighting">
-                                            <label class="form-check-label" for="poor_lighting">
-                                                Poor Lighting
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="slip">
-                                            <label class="form-check-label" for="slip">
-                                                Slip/Trip/Fall
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="pressure">
-                                            <label class="form-check-label" for="pressure">
-                                                High/Low Pressure
                                             </label>
                                         </div>
                                     </div>
@@ -1068,7 +592,9 @@
 
                         <div class="box-header">
                             <div class="col-md-12">
-                                <button type="submit" class=" btn btn-flat btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"
+                                        aria-hidden="true" style="font-size: 12px !important; padding-right: 4px"></i>
+                                    <b>SUBMIT</b></button>
                             </div>
                         </div>
                     </div>
