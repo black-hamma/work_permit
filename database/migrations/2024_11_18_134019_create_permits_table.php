@@ -23,11 +23,16 @@ class CreatePermitsTable extends Migration
             $table->text('equipment_details');
             $table->text('job_description');
             $table->string('receiver_name');
-            $table->string('contract_mps');
+            $table->string('contract_company');
             $table->string('staff_id');
             $table->text('workers_names');
-            $table->string('risk_analysis');
-            $table->string('permits');
+            $table->string('risk_assessment');
+            $table->string('required_permits');
+            $table->string('hazard_identification');
+            $table->string('job_requirements');
+            $table->string('ppe_requirements');
+            $table->string('precautionary_measure');
+            $table->boolean('disclaimer')->default(0);
             $table->timestamps();
         });
     }

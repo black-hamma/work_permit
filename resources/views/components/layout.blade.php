@@ -164,6 +164,11 @@
             /* Darker shade on hover */
         }
 
+        .form-error,
+        .form-error:focus {
+            border: 1px solid #e74c3c;
+        }
+
         @media screen and (max-width: 767px) {
             div.dt-container div.dt-layout-row:not(.dt-layout-table) {
                 display: flex;

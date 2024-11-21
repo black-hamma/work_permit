@@ -43,10 +43,14 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control pull-right" id="datepicker"
-                                                    name="start_date">
+                                                <input type="text"
+                                                    class="form-control{{ $errors->first('start_date') ? ' form-error' : '' }} pull-right"
+                                                    id="datepicker" name="start_date">
                                             </div>
                                             <!-- /.input group -->
+                                            @error('start_date')
+                                                <div class="text-red">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -57,10 +61,14 @@
                                                 <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                 </div>
-                                                <input type="text" class="form-control pull-right" id="Edatepicker"
-                                                    name="end_date">
+                                                <input type="text"
+                                                    class="form-control{{ $errors->first('end_date') ? ' form-error' : '' }} pull-right"
+                                                    id="Edatepicker" name="end_date">
                                             </div>
                                             <!-- /.input group -->
+                                            @error('end_date')
+                                                <div class="text-red">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     {{--  <div class="col-md-4">
@@ -84,7 +92,9 @@
                                     </div>  --}}
                                         <div class="form-group">
                                             <label>Job Location</label>
-                                            <select class="form-control select2" style="width: 100%;" name="job_location">
+                                            <select
+                                                class="form-control{{ $errors->first('job_location') ? ' form-error' : '' }} select2"
+                                                style="width: 100%;" name="job_location">
                                                 <option>Select Job Location</option>
                                                 <option value="Location 1">Alaska</option>
                                                 <option value="Location 2">California</option>
@@ -93,7 +103,11 @@
                                                 <option value="Location 5">Texas</option>
                                                 <option value="Location 6">Washington</option>
                                             </select>
+                                            @error('job_location')
+                                                <div class="text-red">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -102,15 +116,19 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="sub_location">Sub Location</label>
-                                            <input type="text" class="form-control" id="sub_location"
-                                                placeholder="Sub Location" name="sub_location">
+                                            <input type="text"
+                                                class="form-control{{ $errors->first('sub_location') ? ' form-error' : '' }}"
+                                                id="sub_location" placeholder="Sub Location" name="sub_location">
+                                            @error('sub_location')
+                                                <div class="text-red">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Department</label>
                                             <select class="form-control select2" style="width: 100%;" name="department">
-                                                <option value="department 0">Select Department</option>
+                                                <option>Select Department</option>
                                                 <option value="department 1">Alaska</option>
                                                 <option value="department 2">California</option>
                                                 <option value="department 3">Delaware</option>
@@ -127,7 +145,11 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Plant/Equipment Details</label>
-                                            <textarea class="form-control" rows="2" placeholder="Enter ..." name="equipment_details"></textarea>
+                                            <textarea class="form-control{{ $errors->first('equipment_details') ? ' form-error' : '' }}" rows="2"
+                                                placeholder="Enter ..." name="equipment_details"></textarea>
+                                            @error('equipment_details')
+                                                <div class="text-red">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -147,7 +169,7 @@
                                         <div class="form-group">
                                             <label for="job_description">Job Description</label>
                                             <input type="text" class="form-control" id="job_description"
-                                                placeholder="Job Description">
+                                                name="job_description" placeholder="Job Description">
                                         </div>
                                     </div>
                                 </div>
@@ -158,7 +180,7 @@
                                         <div class="form-group">
                                             <label for="receiver_name">Name of Receiver</label>
                                             <input type="text" class="form-control" id="receiver_name"
-                                                placeholder="Name of Receiver">
+                                                placeholder="Name of Receiver" name="receiver_name">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -166,14 +188,14 @@
                                             <label for="contract_company">Contract Company / MPS
                                                 Employer</label>
                                             <input type="text" class="form-control" id="contract_company"
-                                                placeholder="Contract Company / MPS Employer">
+                                                placeholder="Contract Company / MPS Employer" name="contract_company">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="staff_id">Staff ID</label>
                                             <input type="text" class="form-control" id="staff_id"
-                                                placeholder="Staff ID">
+                                                placeholder="Staff ID" name="staff_id">
                                         </div>
                                     </div>
 
@@ -570,8 +592,8 @@
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox"> I agree to the <a href=""
-                                                    class="text-blue"><b>terms of service</b>
+                                                <input type="checkbox" name="disclaimer"> I agree to the <a
+                                                    href="" class="text-blue"><b>terms of service</b>
                                                 </a>.
                                             </label>
                                         </div>
