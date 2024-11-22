@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Str;
+use Symfony\Component\Console\Input\Input;
 
 class PermitController extends Controller
 {
@@ -16,8 +19,7 @@ class PermitController extends Controller
     }
     public function store(Request $request)
     {
-
-        //$workers_names = json_decode($request->input('workers_names'), true);
+        $workers_names = json_decode($request->input('workers_names'), true);
 
         $validated = $request->validate([
             'start_date' => 'required|date',
@@ -40,7 +42,8 @@ class PermitController extends Controller
             'disclaimer' => 'required'
         ]);
 
-        dd($validated);
+
+        //dd('PMT-' . now()->format('YmdHis') . random_int(100, 999));
 
 
     }

@@ -45,7 +45,7 @@
                                                 </div>
                                                 <input type="text"
                                                     class="form-control{{ $errors->first('start_date') ? ' form-error' : '' }} pull-right"
-                                                    id="datepicker" name="start_date">
+                                                    id="datepicker" name="start_date" value="{{ old('start_date') }}">
                                             </div>
                                             <!-- /.input group -->
                                             @error('start_date')
@@ -63,7 +63,7 @@
                                                 </div>
                                                 <input type="text"
                                                     class="form-control{{ $errors->first('end_date') ? ' form-error' : '' }} pull-right"
-                                                    id="Edatepicker" name="end_date">
+                                                    id="Edatepicker" name="end_date" value="{{ old('end_date') }}">
                                             </div>
                                             <!-- /.input group -->
                                             @error('end_date')
@@ -118,7 +118,8 @@
                                             <label for="sub_location">Sub Location</label>
                                             <input type="text"
                                                 class="form-control{{ $errors->first('sub_location') ? ' form-error' : '' }}"
-                                                id="sub_location" placeholder="Sub Location" name="sub_location">
+                                                id="sub_location" placeholder="Sub Location" name="sub_location"
+                                                value="{{ old('sub_location') }}">
                                             @error('sub_location')
                                                 <div class="text-red">{{ $message }}</div>
                                             @enderror
@@ -146,7 +147,7 @@
                                         <div class="form-group">
                                             <label>Plant/Equipment Details</label>
                                             <textarea class="form-control{{ $errors->first('equipment_details') ? ' form-error' : '' }}" rows="2"
-                                                placeholder="Enter ..." name="equipment_details"></textarea>
+                                                placeholder="Enter ..." name="equipment_details">{{ old('equipment_details') }}</textarea>
                                             @error('equipment_details')
                                                 <div class="text-red">{{ $message }}</div>
                                             @enderror
@@ -169,7 +170,8 @@
                                         <div class="form-group">
                                             <label for="job_description">Job Description</label>
                                             <input type="text" class="form-control" id="job_description"
-                                                name="job_description" placeholder="Job Description">
+                                                name="job_description" placeholder="Job Description"
+                                                value="{{ old('job_description') }}">
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +182,8 @@
                                         <div class="form-group">
                                             <label for="receiver_name">Name of Receiver</label>
                                             <input type="text" class="form-control" id="receiver_name"
-                                                placeholder="Name of Receiver" name="receiver_name">
+                                                placeholder="Name of Receiver" name="receiver_name"
+                                                value="{{ old('receiver_name') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
@@ -188,14 +191,15 @@
                                             <label for="contract_company">Contract Company / MPS
                                                 Employer</label>
                                             <input type="text" class="form-control" id="contract_company"
-                                                placeholder="Contract Company / MPS Employer" name="contract_company">
+                                                placeholder="Contract Company / MPS Employer" name="contract_company"
+                                                value="{{ old('contract_company') }}">
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="staff_id">Staff ID</label>
                                             <input type="text" class="form-control" id="staff_id"
-                                                placeholder="Staff ID" name="staff_id">
+                                                placeholder="Staff ID" name="staff_id" value="{{ old('staff_id') }}">
                                         </div>
                                     </div>
 
@@ -222,7 +226,7 @@
                                                 <input type="text" id="usernames"
                                                     placeholder="Type a name and press Enter" />
                                                 <div id="username-tags"></div>
-                                                <input type="hidden" name="workers_names[]" id="usernamesArray" />
+                                                <input type="hidden" name="workers_names" id="usernamesArray" />
                                             </div>
 
                                             {{--  <textarea class="form-control" rows="2" placeholder="Enter names separated by commas..."></textarea>  --}}
@@ -285,6 +289,7 @@
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox"
+                                                {{ old('hazard_identification') == 'on' ? 'checked' : '' }}
                                                 name="hazard_identification[]" value="Hazardous substance"
                                                 id="checkbox2">
                                             <label class="form-check-label" for="checkbox2">
