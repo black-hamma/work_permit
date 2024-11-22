@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\HazardController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PermitController;
 use App\Http\Controllers\UserController;
@@ -37,4 +38,8 @@ Route::get('/location/create', [LocationController::class, 'create'])->name('loc
 Route::get('/department', [DepartmentController::class, 'index'])->name('departments.index');
 Route::get('/department/create', [DepartmentController::class, 'create'])->name('departments.create');
 Route::post('/department', [DepartmentController::class, 'store'])->name('departments.store');
+
+Route::get('/hazards', [HazardController::class, 'index'])->name('hazards.index');
+Route::get('/hazards/create', [HazardController::class, 'create'])->name('hazards.create');
+Route::post('/hazards', [HazardController::class, 'store'])->name('hazards.store');
 

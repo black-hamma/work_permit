@@ -320,7 +320,8 @@
                             </li>
                             <li><a href="{{ route('departments.index') }}"><i
                                         class="fa fa-circle-o"></i>Department</a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>Hazard Identification</a></li>
+                            <li><a href="{{ route('hazards.index') }}"><i class="fa fa-circle-o"></i>Hazard
+                                    Identification</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Job Requirements</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>PPE Requirements</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Precautionary Measures</a></li>
