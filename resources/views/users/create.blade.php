@@ -1,7 +1,7 @@
 @extends('components.layout')
 
 @section('title')
-    {{ 'Permits' }}
+    {{ 'New User' }}
 @endsection
 
 @section('content')
@@ -33,51 +33,103 @@
                         @csrf
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-6 col-md-4">
-                                    <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input type="text" class="form-control" name="name" placeholder="Name">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">First Name</label>
+                                            <input type="text"
+                                                class="form-control{{ $errors->first('first_name') ? ' form-error' : '' }}"
+                                                name="first_name" placeholder="First Name" value="{{ old('start_date') }}">
+                                        </div>
+                                        @error('first_name')
+                                            <div class="text-red">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                </div>
-                                <div class="col-6 col-md-4">
-                                    <div class="form-group">
-                                        <label for="Email">Email</label>
-                                        <input type="text" class="form-control" name="email" placeholder="Email">
+                                    <div class="col-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Last Name</label>
+                                            <input type="text"
+                                                class="form-control{{ $errors->first('last_name') ? ' form-error' : '' }}"
+                                                name="last_name" placeholder="Last Name" value="{{ old('last_name') }}">
+                                        </div>
+                                        @error('last_name')
+                                            <div class="text-red">{{ $message }}</div>
+                                        @enderror
                                     </div>
-                                </div>
-                                <div class="col-6 col-md-4">
-                                    <div class="form-group">
-                                        <label for="Company">Company</label>
-                                        <input type="text" class="form-control" name="company" placeholder="Company">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4">
-                                    <div class="form-group">
-                                        <label for="Phone">Phone</label>
-                                        <input type="number" class="form-control" name="phone" placeholder="Phone">
-                                    </div>
-                                </div>
-                                <div class="col-6 col-md-4">
-                                    <div class="form-group">
-                                        <label>Role</label>
-                                        <select class="form-control select2" name="access" style="width: 100%; ">
-                                            <option selected="selected" value="User">User</option>
-                                            <option value="HSSE">HSSE</option>
-                                            <option value="Administrator">Administrator</option>
 
-                                        </select>
-                                    </div>
                                 </div>
                             </div>
-
                             <div class="row">
-                                <div class="col-md-12">
-                                    <button type="submit" class="btn btn-flat btn-primary pull-right">Create user</button>
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Email</label>
+                                            <input type="email"
+                                                class="form-control{{ $errors->first('email') ? ' form-error' : '' }}"
+                                                name="first_name" placeholder="Email" value="{{ old('email') }}">
+                                        </div>
+                                        @error('email')
+                                            <div class="text-red">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Company</label>
+                                            <input type="text"
+                                                class="form-control{{ $errors->first('company') ? ' form-error' : '' }}"
+                                                name="company" placeholder="Company" value="{{ old('company') }}">
+                                        </div>
+                                        @error('company')
+                                            <div class="text-red">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-6 col-md-6">
+                                        <div class="form-group">
+                                            <label for="name">Phone</label>
+                                            <input type="number"
+                                                class="form-control{{ $errors->first('phone') ? ' form-error' : '' }}"
+                                                name="phone" placeholder="Phone" value="{{ old('phone') }}">
+                                        </div>
+                                        @error('phone')
+                                            <div class="text-red">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="col-6 col-md-6">
+                                        <div class="form-group">
+                                            <label>Role</label>
+                                            <select class="form-control select2" name="role" style="width: 100%; ">
+                                                <option selected="selected" value="User">User</option>
+                                                <option value="HSSE">HSSE</option>
+                                                <option value="Administrator">Administrator</option>
 
+                                            </select>
+                                        </div>
+                                        @error('role')
+                                            <div class="text-red">{{ $message }}</div>
+                                        @enderror
+                                    </div>
 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-sm btn-success pull-right">
+                                                <i class="fa fa-save" aria-hidden="true"
+                                                    style="font-size: 12px !important; padding-right: 5px"></i>
+                                                <b>Add User</b>
+                                            </button>
+                                        </div>
+                                    </div>
 
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

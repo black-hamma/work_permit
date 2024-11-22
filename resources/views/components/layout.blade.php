@@ -316,8 +316,10 @@
                             </li>
                             {{--  <li><a href=""><i class="fa fa-circle-o"></i>Roles </a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Project </a></li>  --}}
-                            <li><a href=""><i class="fa fa-circle-o"></i>Location </a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>Department </a></li>
+                            <li><a href="{{ route('locations.index') }}"><i class="fa fa-circle-o"></i>Location</a>
+                            </li>
+                            <li><a href="{{ route('departments.index') }}"><i
+                                        class="fa fa-circle-o"></i>Department</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Hazard Identification</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Job Requirements</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>PPE Requirements</a></li>

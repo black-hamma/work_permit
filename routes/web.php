@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PermitController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -28,3 +30,11 @@ Route::post('permits', [PermitController::class, 'store'])->name('permits.store'
 Route::get('/user', [UserController::class, 'index'])->name('users.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
+
+Route::get('/location', [LocationController::class, 'index'])->name('locations.index');
+Route::get('/location/create', [LocationController::class, 'create'])->name('locations.create');
+
+Route::get('/department', [DepartmentController::class, 'index'])->name('departments.index');
+Route::get('/department/create', [DepartmentController::class, 'create'])->name('departments.create');
+Route::post('/department', [DepartmentController::class, 'store'])->name('departments.store');
+

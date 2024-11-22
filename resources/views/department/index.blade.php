@@ -1,22 +1,22 @@
 @extends('components.layout')
 
 @section('title')
-    {{ 'Permits' }}
+    {{ 'Departments' }}
 @endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Users
-            <small>All users</small>
+            Departments
+            <small>All Departments</small>
         </h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li><a href="#">Users</a></li>
-            <li class="active">All Permits</li>
+            <li><a href="{{ route('departments.index') }}">Departments</a></li>
+            <li class="active">All Departments</li>
         </ol>
     </section>
 
@@ -30,9 +30,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('users.create') }}" class="add-new-link">
+                                    <a href="{{ route('departments.create') }}" class="add-new-link">
                                         <i class="fa fa-plus"></i>
-                                        <b>ADD USER</b>
+                                        <b>ADD DEPARTMENT</b>
                                     </a>
                                 </div>
 

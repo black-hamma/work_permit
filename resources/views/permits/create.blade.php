@@ -248,9 +248,10 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Permit(s) Required</label>
-                                            <select class="form-control select2 select2-hidden-accessible" multiple=""
-                                                data-placeholder="Select Permit(s)" style="width: 100%;" tabindex="-1"
-                                                aria-hidden="true" name="permit_required[]">
+                                            <select class="form-control select2 select2-hidden-accessible"
+                                                multiple="multiple" data-placeholder="Select Permit(s)"
+                                                style="width: 100%;" tabindex="-1" aria-hidden="true"
+                                                name="permit_required[]">
                                                 <option>Civil Work</option>
                                                 <option>Excavation</option>
                                                 <option>Confined Space</option>
@@ -299,7 +300,7 @@
                                     </div>
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
+                                            <input class="form-check-input" type="checkbox" value="Buried services"
                                                 id="checkbox3" name="hazard_identification[]">
                                             <label class="form-check-label" for="checkbox3">
                                                 Buried services
@@ -597,8 +598,8 @@
 
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="disclaimer"> I agree to the <a
-                                                    href="" class="text-blue"><b>terms of service</b>
+                                                <input type="checkbox" name="is_disclaimer" value="1"> I agree to
+                                                the <a href="" class="text-blue"><b>terms of service</b>
                                                 </a>.
                                             </label>
                                         </div>
