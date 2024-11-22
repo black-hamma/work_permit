@@ -120,25 +120,21 @@
 
         <div class="row">
             <div class="col-md-3">
-                <!-- Box Comment -->
                 <div class="box box-widget">
                     <div class="box-header with-border">
-                        <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
-                        <!-- /.user-block -->
+                        <span class="username">Jonathan Burke Jr.</span>
                         <div class="box-tools">
                             <a href="" class="btn btn-box-tool" data-toggle="tooltip" title=""
-                                data-original-title="Mark as read">
+                                data-original-title="Edit">
                                 <i class="fa fa-pencil"></i></a>
 
-                            <a href="" class="btn btn-box-tool" data-widget="remove"><i
-                                    class="fa fa-bitbucket"></i></a>
+                            <a href="" class="btn btn-box-tool" data-toggle="tooltip" title=""
+                                data-original-title="Delete"><i class="fa fa-bitbucket"></i></a>
                         </div>
-                        <!-- /.box-tools -->
+
                     </div>
-                    <!-- /.box-header -->
 
                 </div>
-                <!-- /.box -->
             </div>
         </div>
 
