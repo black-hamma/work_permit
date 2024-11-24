@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\HazardController;
+use App\Http\Controllers\JobRequirementController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PermitController;
+use App\Http\Controllers\PpeRequirementController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,4 +44,11 @@ Route::post('/department', [DepartmentController::class, 'store'])->name('depart
 Route::get('/hazards', [HazardController::class, 'index'])->name('hazards.index');
 Route::get('/hazards/create', [HazardController::class, 'create'])->name('hazards.create');
 Route::post('/hazards', [HazardController::class, 'store'])->name('hazards.store');
+
+Route::get('/job-requirements', [JobRequirementController::class, 'index'])->name('job-requirements.index');
+Route::post('/job-requirements', [JobRequirementController::class, 'store'])->name('job-requirements.store');
+
+Route::get('/ppe-requirements', [PpeRequirementController::class, 'index'])->name('ppe-requirements.index');
+Route::post('/ppe-requirements', [PpeRequirementController::class, 'store'])->name('ppe-requirements.store');
+
 

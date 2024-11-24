@@ -15,7 +15,7 @@
             <li>
                 <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li><a href="{{ route('hazards.index') }}">Departments</a></li>
+            <li><a href="{{ route('hazards.index') }}">Hazards</a></li>
             <li class="active">Add Hazard</li>
         </ol>
     </section>
@@ -27,6 +27,10 @@
                 <div class="box">
                     <div class="box-header with-border text-blue">
                         <strong>ADD NEW</strong>
+                        <a href="{{ route('hazards.index') }}" class="btn btn-sm btn-danger pull-right">
+                            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                            <b>BACK</b>
+                        </a>
                     </div>
                     <!-- /.box-header -->
                     <form action="{{ route('hazards.store') }}" method="POST">

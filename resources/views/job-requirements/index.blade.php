@@ -1,22 +1,21 @@
 @extends('components.layout')
 
 @section('title')
-    {{ 'Hazards' }}
+    {{ 'Job Requirements' }}
 @endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Hazards
-            <small>All Hazards</small>
+            Job Requirements
+            {{-- <small>All Hazards</small> --}}
         </h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li><a href="{{ route('hazards.index') }}">Hazards</a></li>
-            <li class="active">All Hazards</li>
+            <li class="active">Job Requirements</a></li>
         </ol>
     </section>
 
@@ -102,19 +101,44 @@
             <!-- /.col -->
         </div> --}}
         <div class="box">
-            <div class="box-header">
-                <div class="row">
-                    <div class="col-md-12">
-                        {{-- <div class="btn-group btn-group-sm"> --}}
+            <div class="box-body">
+                <form action="{{ route('job-requirements.store') }}" method="POST">
+                    @csrf
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
 
-                        <a href="{{ route('hazards.create') }}" class="btn btn-sm btn-primary">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            <b>ADD NEW</b>
-                        </a>
-                        {{-- </div> --}}
+                                <div class="form-group">
+                                    <label for="name">New Job Requirement</label>
+                                    <input type="text"
+                                        class="form-control{{ $errors->first('job_requirement') ? ' form-error' : '' }}"
+                                        name="job_requirement" placeholder="Type job requirement here ..."
+                                        value="{{ old('job_requirement') }}">
+                                </div>
+                                @error('job_requirement')
+                                    <div class="text-red">{{ $message }}</div>
+                                @enderror
 
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-sm btn-success pull-right">
+                                            <i class="fa fa-save" aria-hidden="true"
+                                                style="font-size: 12px !important; padding-right: 5px"></i>
+                                            <b>Add Requirement</b>
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="row">

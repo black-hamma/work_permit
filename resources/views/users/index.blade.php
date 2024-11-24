@@ -29,12 +29,12 @@
                     <div class="box-header">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('users.create') }}" class="add-new-link">
-                                        <i class="fa fa-plus"></i>
-                                        <b>ADD USER</b>
-                                    </a>
-                                </div>
+
+                                <a href="{{ route('users.create') }}" class="btn btn-sm btn-primary">
+                                    <i class="fa fa-plus"></i>
+                                    <b>ADD USER</b>
+                                </a>
+
 
                             </div>
                         </div>

@@ -169,6 +169,11 @@
             border: 1px solid #e74c3c;
         }
 
+        .modal-footer,
+        .modal-header {
+            padding: 10px;
+        }
+
         @media screen and (max-width: 767px) {
             div.dt-container div.dt-layout-row:not(.dt-layout-table) {
                 display: flex;
@@ -322,8 +327,10 @@
                                         class="fa fa-circle-o"></i>Department</a></li>
                             <li><a href="{{ route('hazards.index') }}"><i class="fa fa-circle-o"></i>Hazard
                                     Identification</a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>Job Requirements</a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>PPE Requirements</a></li>
+                            <li><a href="{{ route('job-requirements.index') }}"><i class="fa fa-circle-o"></i>Job
+                                    Requirements</a></li>
+                            <li><a href="{{ route('ppe-requirements.index') }}"><i class="fa fa-circle-o"></i>PPE
+                                    Requirements</a></li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Precautionary Measures</a></li>
                             {{--  <li><a href=""><i class="fa fa-circle-o"></i>Jobs</a></li>  --}}
                         </ul>
@@ -530,31 +537,37 @@
 
 
     <!-- Modal -->
-    {{-- <div class="modal fade" id="addQuestion" tabindex="-1" role="dialog" aria-labelledby="addQuestionLabel">
-        <div class="modal-dialog" role="document">
-            <form action="{{ route('survey.getQuestion') }}" method="POST" id="QF">
+    <div class="modal fade" id="edit_hazard" tabindex="-1" role="dialog" aria-labelledby="edit_hazard_label">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <form action="" method="POST" id="QF">
                 @csrf
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <span class="modal-title" id="addQuestionLabel">New Question</span>
+                        <span class="modal-title" id="edit_hazard_label">Edit Hazard</span>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <textarea class="form-control" name="question" rows="3" placeholder="Enter ..."></textarea>
+                            <input class="form-control" type="text" name="" id=""
+                                placeholder="Type hazard name here ...">
                         </div>
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btn-sm btn-flat"
-                            data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary btn-sm btn-flat">Save changes</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
+                            <i class="fa fa-times" aria-hidden="true"
+                                style="font-size: 12px !important; padding-right: 5px"></i>Close</button>
+                        <button type="submit" class="btn btn-success btn-sm">
+                            <i class="fa fa-save" aria-hidden="true"
+                                style="font-size: 12px !important; padding-right: 5px"></i>
+                            Save changes
+                        </button>
                     </div>
                 </div>
             </form>
         </div>
-    </div> --}}
+    </div>
 
 
 

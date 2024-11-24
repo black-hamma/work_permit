@@ -27,6 +27,10 @@
                 <div class="box">
                     <div class="box-header with-border text-blue">
                         <strong>ADD NEW</strong>
+                        <a href="{{ route('users.index') }}" class="btn btn-sm btn-danger pull-right">
+                            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                            <b>BACK</b>
+                        </a>
                     </div>
                     <!-- /.box-header -->
                     <form action="{{ route('users.store') }}" method="POST">
@@ -102,11 +106,10 @@
                                     <div class="col-6 col-md-6">
                                         <div class="form-group">
                                             <label>Role</label>
-                                            <select class="form-control select2" name="role" style="width: 100%; ">
+                                            <select class="form-control select2" name="role" style="width: 100%;">
                                                 <option selected="selected" value="User">User</option>
                                                 <option value="HSSE">HSSE</option>
                                                 <option value="Administrator">Administrator</option>
-
                                             </select>
                                         </div>
                                         @error('role')
@@ -120,7 +123,8 @@
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-sm btn-success pull-right">
+                                            <button type="submit" class="btn btn-sm btn-success pull-right"
+                                                style="margin-right: 15px">
                                                 <i class="fa fa-save" aria-hidden="true"
                                                     style="font-size: 12px !important; padding-right: 5px"></i>
                                                 <b>Add User</b>
