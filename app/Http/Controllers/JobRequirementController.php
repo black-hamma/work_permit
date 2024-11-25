@@ -7,28 +7,22 @@ use Illuminate\Http\Request;
 
 class JobRequirementController extends Controller
 {
-    // Display a listing of job requirements
-    public function index()
+    // checking the method and take action appropriately
+    public function index(Request $request)
     {
-        //$jobRequirements = JobRequirement::all();
-        // return view('job-requirements.index', compact('jobRequirements'));
-        return view('job-requirements.index');
+        return $request->isMethod('post') ? $this->create($request) : view('job-requirements.index', ['requirements' => JobRequirement::all()]);
     }
 
     // Store a newly created job requirement in storage
-    public function store(Request $request)
+    public function create($request)
     {
 
-        $validated = $request->validate([
-
-            'job_requirement' => 'required|string',
-
+        $data = $request->validate([
+            'job_requirement' => 'required',
         ]);
 
-        dd($validated);
+        JobRequirement::create($data);
+        return back()->with('success', "{$data['job_requirement']} successfully created");
 
-        JobRequirement::create($validated);
-
-        return redirect()->route('job-requirements.index')->with('success', 'Job Requirement created successfully.');
     }
 }

@@ -102,11 +102,18 @@
         </div> --}}
         <div class="box">
             <div class="box-body">
-                <form action="{{ route('job-requirements.store') }}" method="POST">
+
+                <form method="POST">
                     @csrf
                     <div class="box-body">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
+
+                                @if (session('success'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
 
                                 <div class="form-group">
                                     <label for="name">New Job Requirement</label>
@@ -142,40 +149,26 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-6 col-md-4">
-                <div class="box box-widget">
-                    <div class="box-header with-border">
-                        <span class="username">Workers receive safty induction & toolbox briefcase.</span>
-                        <div class="box-tools" style="margin-top: 5px">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
-                                <i class="fa fa-pencil"></i>
-                            </a>
+            @foreach ($requirements as $requirement)
+                <div class="col-6 col-md-4">
+                    <div class="box box-widget">
+                        <div class="box-header with-border">
+                            <span class="username">{{ $requirement->job_requirement }}</span>
+                            <div class="box-tools" style="margin-top: 5px">
+                                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
 
-                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
+                                <a href="" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
+                            </div>
+
                         </div>
 
                     </div>
-
                 </div>
-            </div>
+            @endforeach
 
-            <div class="col-6 col-md-4">
-                <div class="box box-widget">
-                    <div class="box-header with-border">
-                        <span class="username">Environmental pollution</span>
-                        <div class="box-tools" style="margin-top: 5px">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-
-                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-6 col-md-4">
+            {{-- <div class="col-6 col-md-4">
                 <div class="box box-widget">
                     <div class="box-header with-border">
                         <span class="username">Environmental pollution</span>
@@ -191,6 +184,22 @@
 
                 </div>
             </div>
+            <div class="col-6 col-md-4">
+                <div class="box box-widget">
+                    <div class="box-header with-border">
+                        <span class="username">Environmental pollution</span>
+                        <div class="box-tools" style="margin-top: 5px">
+                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
+                                <i class="fa fa-pencil"></i>
+                            </a>
+
+                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div> --}}
 
         </div>
 
