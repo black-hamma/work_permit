@@ -34,8 +34,9 @@ Route::get('/user', [UserController::class, 'index'])->name('users.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
 
-Route::get('/location', [LocationController::class, 'index'])->name('locations.index');
-Route::get('/location/create', [LocationController::class, 'create'])->name('locations.create');
+Route::any('/location', [LocationController::class, 'index'])->name('locations.index');
+Route::post('/location/{location}', [LocationController::class, 'update'])->name('locations.update');
+Route::delete('/location/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
 
 Route::get('/department', [DepartmentController::class, 'index'])->name('departments.index');
 Route::get('/department/create', [DepartmentController::class, 'create'])->name('departments.create');
@@ -46,7 +47,8 @@ Route::get('/hazards/create', [HazardController::class, 'create'])->name('hazard
 Route::post('/hazards', [HazardController::class, 'store'])->name('hazards.store');
 
 Route::any('/job-requirements', [JobRequirementController::class, 'index'])->name('job-requirements.index');
-// Route::post('/job-requirements', [JobRequirementController::class, 'store'])->name('job-requirements.store');
+Route::post('/job-requirements/{job_requirement}', [JobRequirementController::class, 'update'])->name('job-requirements.update');
+Route::delete('/job-requirements/{job_requirement}', [JobRequirementController::class, 'destroy'])->name('job-requirements.destroy');
 
 Route::get('/ppe-requirements', [PpeRequirementController::class, 'index'])->name('ppe-requirements.index');
 Route::post('/ppe-requirements', [PpeRequirementController::class, 'store'])->name('ppe-requirements.store');

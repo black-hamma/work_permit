@@ -50,6 +50,10 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('toastr/build/toastr.min.css') }}">
+
+    <script src="{{ asset('toastr/build/toastr.min.js') }}"></script>
+
     <style>
         .select2-container .select2-selection--single {
             height: 34px;
@@ -533,43 +537,28 @@
             usernameList.splice(index, 1);
             renderUsernames();
         };
+
+
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+
+
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'success':
+                    toastr.success("{{ Session::get('message') }}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+                case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+            }
+        @endif
     </script>
-
-
-    <!-- Modal -->
-    <div class="modal fade" id="edit_job{{ $requirement->id }}" tabindex="-1" role="dialog"
-        aria-labelledby="edit_job_label">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <form action="" method="POST" id="QF">
-                @csrf
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">&times;</span></button>
-                        <span class="modal-title" id="edit_job_label">Edit Job Requirement</span>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <input class="form-control" type="text" name="edit_job"
-                                value="{{ $requirement->job_requirement }}" placeholder="Type hazard name here ...">
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
-                            <i class="fa fa-times" aria-hidden="true"
-                                style="font-size: 12px !important; padding-right: 5px"></i>Close</button>
-                        <button type="submit" class="btn btn-success btn-sm">
-                            <i class="fa fa-save" aria-hidden="true"
-                                style="font-size: 12px !important; padding-right: 5px"></i>
-                            Save changes
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
 
 
 

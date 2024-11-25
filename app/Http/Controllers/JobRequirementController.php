@@ -21,8 +21,51 @@ class JobRequirementController extends Controller
             'job_requirement' => 'required',
         ]);
 
-        JobRequirement::create($data);
-        return back()->with('success', "{$data['job_requirement']} successfully created");
+        $job_requirement = JobRequirement::create($data);
 
+        if (!$job_requirement) {
+
+            $notification = array(
+                'message' => 'Failed to create Job Requirement',
+                'alert-type' => 'error'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Job Requirement Created!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
+
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $data = $request->validate([
+            'job_requirement' => 'required',
+        ]);
+
+        $requirement = JobRequirement::findOrFail($id);
+        $requirement->job_requirement = $data['job_requirement'];
+
+        if ($requirement->update()) {
+
+            $notification = array(
+                'message' => 'Job Requirement updated!',
+                'alert-type' => 'success'
+            );
+        }
+
+
+        return back()->with($notification);
+    }
+
+    public function destroy($id)
+    {
+        $requirement = JobRequirement::find($id);
+        $requirement->delete();
+        return redirect()->back()->with('message', 'Requirement deleted successfully');
     }
 }

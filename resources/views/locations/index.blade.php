@@ -1,37 +1,38 @@
 @extends('components.layout')
 
 @section('title')
-    {{ 'Job Requirements' }}
+    {{ 'Locations' }}
 @endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Job Requirements
-            {{-- <small>All Hazards</small> --}}
+            Locations
+            <small>All locations</small>
         </h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li class="active">Job Requirements</a></li>
+            <li><a href="#">Users</a></li>
+            <li class="active">All Locations</li>
         </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
 
-        {{-- <div class="row">
+        {{--  <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('hazards.create') }}" class="add-new-link">
+                                    <a href="{{ route('locations.create') }}" class="add-new-link">
                                         <i class="fa fa-plus"></i>
-                                        <b>ADD HAZARD</b>
+                                        <b>ADD LOCATION</b>
                                     </a>
                                 </div>
 
@@ -46,8 +47,12 @@
                             <thead>
                                 <tr>
                                     <th>Actions</th>
-                                    <th>Hazard</th>
-
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Company</th>
+                                    <th>Created</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,7 +67,11 @@
                                         </a>
                                     </td>
                                     <td>Tiger</td>
-
+                                    <td>Nixon</td>
+                                    <td>TNixon@gmail.com</td>
+                                    <td>Accountant</td>
+                                    <td>2011-04-25 13:00</td>
+                                    <td><span class="badge badge-flat bg-red">Active</span></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -73,8 +82,12 @@
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                     </td>
-                                    <td>Workers receive safty induction & toolbox briefcase.</td>
-
+                                    <td>Garrett</td>
+                                    <td>Winters</td>
+                                    <td>GWinters@gmail.com</td>
+                                    <td>Accountant</td>
+                                    <td>2011-04-25 17:00</td>
+                                    <td><span class="badge badge-flat bg-green">Active</span></td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -85,8 +98,12 @@
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                     </td>
-                                    <td>Workers receive safty induction & toolbox briefcase.</td>
-
+                                    <td>Ashton</td>
+                                    <td>Cox</td>
+                                    <td>ACox@gmail.com</td>
+                                    <td>Junior Technical Author</td>
+                                    <td>2011-04-25 17:00</td>
+                                    <td><span class="badge badge-flat bg-red">Active</span></td>
                                 </tr>
 
                             </tbody>
@@ -99,7 +116,8 @@
                 <!-- /.box -->
             </div>
             <!-- /.col -->
-        </div> --}}
+        </div>  --}}
+
         <div class="box">
             <div class="box-body">
 
@@ -116,13 +134,13 @@
                                 @endif
 
                                 <div class="form-group">
-                                    <label for="name">New Job Requirement</label>
+                                    <label for="location">New Location</label>
                                     <input type="text"
-                                        class="form-control{{ $errors->first('job_requirement') ? ' form-error' : '' }}"
-                                        name="job_requirement" placeholder="Type job requirement here ..."
-                                        value="{{ old('job_requirement') }}">
+                                        class="form-control{{ $errors->first('location') ? ' form-error' : '' }}"
+                                        name="location" placeholder="Type location here ..." value="{{ old('location') }}"
+                                        id="location">
                                 </div>
-                                @error('job_requirement')
+                                @error('location')
                                     <div class="text-red">{{ $message }}</div>
                                 @enderror
 
@@ -137,7 +155,7 @@
                                         <button type="submit" class="btn btn-sm btn-success pull-right">
                                             <i class="fa fa-save" aria-hidden="true"
                                                 style="font-size: 12px !important; padding-right: 5px"></i>
-                                            <b>Add Requirement</b>
+                                            <b>Add Location</b>
                                         </button>
                                     </div>
                                 </div>
@@ -149,22 +167,22 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($requirements as $requirement)
+            @foreach ($locations as $location)
                 <div class="col-6 col-md-4">
                     <div class="box box-widget">
                         <div class="box-header with-border">
-                            <span class="username">{{ $requirement->job_requirement }}</span>
+                            <span class="username">{{ $location->location }}</span>
                             <div class="box-tools" style="margin-top: 5px">
                                 <a class="btn btn-primary btn-xs" data-toggle="modal"
-                                    data-target="#edit_job{{ $requirement->id }}">
+                                    data-target="#edit_job{{ $location->id }}">
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('job-requirements.destroy', $requirement->id) }}"
-                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $requirement->id }}').submit();"
+                                <a href="{{ route('job-requirements.destroy', $location->id) }}"
+                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $location->id }}').submit();"
                                     class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
-                                <form id="delete-form-{{ $requirement->id }}" +
-                                    action="{{ route('job-requirements.destroy', $requirement->id) }}" method="post">
+                                <form id="delete-form-{{ $location->id }}" +
+                                    action="{{ route('job-requirements.destroy', $location->id) }}" method="post">
                                     @csrf @method('DELETE')
                                 </form>
                             </div>
@@ -175,10 +193,10 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="edit_job{{ $requirement->id }}" tabindex="-1" role="dialog"
+                <div class="modal fade" id="edit_job{{ $location->id }}" tabindex="-1" role="dialog"
                     aria-labelledby="edit_job_label">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <form action="{{ route('job-requirements.update', $requirement->id) }}" method="POST">
+                        <form action="{{ route('locations.update', $location->id) }}" method="POST">
                             @csrf
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -189,7 +207,7 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                         <input class="form-control" type="text" name="job_requirement"
-                                            value="{{ $requirement->job_requirement }}"
+                                            value="{{ $location->location }}"
                                             placeholder="Type job requirement name here ...">
                                     </div>
 
@@ -210,42 +228,7 @@
                 </div>
             @endforeach
 
-            {{-- <div class="col-6 col-md-4">
-                <div class="box box-widget">
-                    <div class="box-header with-border">
-                        <span class="username">Environmental pollution</span>
-                        <div class="box-tools" style="margin-top: 5px">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-
-                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <div class="col-6 col-md-4">
-                <div class="box box-widget">
-                    <div class="box-header with-border">
-                        <span class="username">Environmental pollution</span>
-                        <div class="box-tools" style="margin-top: 5px">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
-                                <i class="fa fa-pencil"></i>
-                            </a>
-
-                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div> --}}
-
         </div>
-
-        <!-- /.row -->
     </section>
     <!-- /.content -->
 @endsection
