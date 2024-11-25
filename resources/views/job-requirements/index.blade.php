@@ -155,7 +155,8 @@
                         <div class="box-header with-border">
                             <span class="username">{{ $requirement->job_requirement }}</span>
                             <div class="box-tools" style="margin-top: 5px">
-                                <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
+                                <a class="btn btn-primary btn-xs" data-toggle="modal"
+                                    data-target="#edit_job{{ $requirement->id }}">
                                     <i class="fa fa-pencil"></i>
                                 </a>
 

@@ -537,7 +537,8 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="edit_hazard" tabindex="-1" role="dialog" aria-labelledby="edit_hazard_label">
+    <div class="modal fade" id="edit_job{{ $requirement->id }}" tabindex="-1" role="dialog"
+        aria-labelledby="edit_job_label">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <form action="" method="POST" id="QF">
                 @csrf
@@ -545,12 +546,12 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">&times;</span></button>
-                        <span class="modal-title" id="edit_hazard_label">Edit Hazard</span>
+                        <span class="modal-title" id="edit_job_label">Edit Job Requirement</span>
                     </div>
                     <div class="modal-body">
                         <div class="form-group">
-                            <input class="form-control" type="text" name="" id=""
-                                placeholder="Type hazard name here ...">
+                            <input class="form-control" type="text" name="edit_job"
+                                value="{{ $requirement->job_requirement }}" placeholder="Type hazard name here ...">
                         </div>
 
                     </div>
