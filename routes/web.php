@@ -38,19 +38,20 @@ Route::any('/location', [LocationController::class, 'index'])->name('locations.i
 Route::post('/location/{location}', [LocationController::class, 'update'])->name('locations.update');
 Route::delete('/location/{location}', [LocationController::class, 'destroy'])->name('locations.destroy');
 
-Route::get('/department', [DepartmentController::class, 'index'])->name('departments.index');
-Route::get('/department/create', [DepartmentController::class, 'create'])->name('departments.create');
-Route::post('/department', [DepartmentController::class, 'store'])->name('departments.store');
+Route::any('/department', [DepartmentController::class, 'index'])->name('departments.index');
+Route::post('/department/{department}', [DepartmentController::class, 'update'])->name('departments.update');
+Route::delete('/department/{department}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
 
-Route::get('/hazards', [HazardController::class, 'index'])->name('hazards.index');
-Route::get('/hazards/create', [HazardController::class, 'create'])->name('hazards.create');
-Route::post('/hazards', [HazardController::class, 'store'])->name('hazards.store');
+Route::any('/hazards', [HazardController::class, 'index'])->name('hazards.index');
+Route::post('/hazards/{hazard}', [HazardController::class, 'update'])->name('hazards.update');
+Route::delete('/hazards/{hazard}', [HazardController::class, 'destroy'])->name('hazards.destroy');
 
 Route::any('/job-requirements', [JobRequirementController::class, 'index'])->name('job-requirements.index');
 Route::post('/job-requirements/{job_requirement}', [JobRequirementController::class, 'update'])->name('job-requirements.update');
 Route::delete('/job-requirements/{job_requirement}', [JobRequirementController::class, 'destroy'])->name('job-requirements.destroy');
 
-Route::get('/ppe-requirements', [PpeRequirementController::class, 'index'])->name('ppe-requirements.index');
-Route::post('/ppe-requirements', [PpeRequirementController::class, 'store'])->name('ppe-requirements.store');
+Route::any('/ppe-requirements', [PpeRequirementController::class, 'index'])->name('ppe-requirements.index');
+Route::post('/ppe-requirements/{ppe_requirement}', [PpeRequirementController::class, 'update'])->name('ppe-requirements.update');
+Route::delete('/ppe-requirements/{ppe_requirement}', [PpeRequirementController::class, 'destroy'])->name('ppe-requirements.destroy');
 
 

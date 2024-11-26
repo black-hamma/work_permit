@@ -26,7 +26,9 @@ class LocationController extends Controller
                 'message' => 'Failed to create location',
                 'alert-type' => 'error'
             );
+
         } else {
+
             $notification = array(
                 'message' => 'Location Created!',
                 'alert-type' => 'success'
@@ -57,5 +59,11 @@ class LocationController extends Controller
 
 
         return back()->with($notification);
+    }
+    public function destroy($id)
+    {
+        $location = Location::find($id);
+        $location->delete();
+        return back()->with('success', 'Location deleted successfully');
     }
 }

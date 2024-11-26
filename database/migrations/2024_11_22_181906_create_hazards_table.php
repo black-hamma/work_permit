@@ -15,6 +15,7 @@ class CreateHazardsTable extends Migration
     {
         Schema::create('hazards', function (Blueprint $table) {
             $table->id();
+            $table->string('hazard');
             $table->timestamps();
         });
     }

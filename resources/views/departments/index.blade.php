@@ -1,20 +1,20 @@
 @extends('components.layout')
 
 @section('title')
-    {{ 'PPE Requirements' }}
+    {{ 'Departments' }}
 @endsection
 
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            PPE Requirements
+            Departments
         </h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li class="active">PPE Requirements</a></li>
+            <li class="active">Departments</li>
         </ol>
     </section>
 
@@ -37,13 +37,13 @@
                                 @endif
 
                                 <div class="form-group">
-                                    <label for="name">New PPE Requirement</label>
+                                    <label for="department">New Department</label>
                                     <input type="text"
-                                        class="form-control{{ $errors->first('ppe_requirement') ? ' form-error' : '' }}"
-                                        name="ppe_requirement" placeholder="Type PPE requirement here ..."
-                                        value="{{ old('ppe_requirement') }}">
+                                        class="form-control{{ $errors->first('department') ? ' form-error' : '' }}"
+                                        name="department" placeholder="Type department here ..."
+                                        value="{{ old('department') }}" id="department">
                                 </div>
-                                @error('ppe_requirement')
+                                @error('department')
                                     <div class="text-red">{{ $message }}</div>
                                 @enderror
 
@@ -58,7 +58,7 @@
                                         <button type="submit" class="btn btn-sm btn-success pull-right">
                                             <i class="fa fa-save" aria-hidden="true"
                                                 style="font-size: 12px !important; padding-right: 5px"></i>
-                                            <b>Add Requirement</b>
+                                            <b>Add Department</b>
                                         </button>
                                     </div>
                                 </div>
@@ -70,22 +70,22 @@
             </div>
         </div>
         <div class="row">
-            @foreach ($requirements as $requirement)
+            @foreach ($departments as $department)
                 <div class="col-6 col-md-4">
                     <div class="box box-widget">
                         <div class="box-header with-border">
-                            <span class="username">{{ $requirement->ppe_requirement }}</span>
+                            <span class="username">{{ $department->department }}</span>
                             <div class="box-tools" style="margin-top: 5px">
                                 <a class="btn btn-primary btn-xs" data-toggle="modal"
-                                    data-target="#edit_job{{ $requirement->id }}">
+                                    data-target="#edit_dep{{ $department->id }}">
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('ppe-requirements.destroy', $requirement->id) }}"
-                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $requirement->id }}').submit();"
+                                <a href="{{ route('departments.destroy', $department->id) }}"
+                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $department->id }}').submit();"
                                     class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
-                                <form id="delete-form-{{ $requirement->id }}" +
-                                    action="{{ route('ppe-requirements.destroy', $requirement->id) }}" method="post">
+                                <form id="delete-form-{{ $department->id }}" +
+                                    action="{{ route('departments.destroy', $department->id) }}" method="post">
                                     @csrf @method('DELETE')
                                 </form>
                             </div>
@@ -96,22 +96,22 @@
                 </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="edit_job{{ $requirement->id }}" tabindex="-1" role="dialog"
-                    aria-labelledby="edit_job_label">
+                <div class="modal fade" id="edit_dep{{ $department->id }}" tabindex="-1" role="dialog"
+                    aria-labelledby="edit_dep_label">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <form action="{{ route('ppe-requirements.update', $requirement->id) }}" method="POST">
+                        <form action="{{ route('departments.update', $department->id) }}" method="POST">
                             @csrf
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                             aria-hidden="true">&times;</span></button>
-                                    <span class="modal-title" id="edit_job_label">Edit PPE Requirement</span>
+                                    <span class="modal-title" id="edit_dep_label">Edit Department</span>
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="ppe_requirement"
-                                            value="{{ $requirement->ppe_requirement }}"
-                                            placeholder="Type PPE requirement name here ...">
+                                        <input class="form-control" type="text" name="department"
+                                            value="{{ $department->department }}"
+                                            placeholder="Type department name here ...">
                                     </div>
 
                                 </div>

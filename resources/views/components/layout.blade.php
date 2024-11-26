@@ -54,6 +54,7 @@
 
     <script src="{{ asset('toastr/build/toastr.min.js') }}"></script>
 
+
     <style>
         .select2-container .select2-selection--single {
             height: 34px;
@@ -459,41 +460,6 @@
             $(this).parent('.remove').remove();
             e.preventDefault();
         });
-
-
-        // new DataTable('#example', {
-        //     info: true,
-        //     ordering: true,
-        //     paging: true,
-        //     autoWidth: true
-        // });
-        // new DataTable('#example');
-        //  new DataTable('#example', {
-        //     columns: [{
-        //             data: ''
-        //         },
-
-        //         {
-        //             data: 'name'
-        //         },
-        //         {
-        //             data: 'position'
-        //         },
-        //         {
-        //             data: 'office'
-        //         },
-        //         {
-        //             data: 'age'
-        //         },
-        //         {
-        //             data: 'start_date'
-        //         },
-        //         {
-        //             data: 'salary'
-        //         }
-        //     ]
-        // });
-
 
 
         const inputField = document.getElementById('usernames');

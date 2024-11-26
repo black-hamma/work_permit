@@ -7,28 +7,65 @@ use Illuminate\Http\Request;
 
 class PpeRequirementController extends Controller
 {
-    // Display a listing of ppe requirements
-    public function index()
+    public function index(Request $request)
     {
-        //$jobRequirements = JobRequirement::all();
-        // return view('ppe-requirements.index', compact('jobRequirements'));
-        return view('ppe-requirements.index');
+        return $request->isMethod('post') ? $this->create($request) : view('ppe-requirements.index', ['requirements' => PpeRequirement::all()]);
     }
 
-    // Store a newly created ppe requirement in storage
-    public function store(Request $request)
+    // Store a newly created job requirement in storage
+    public function create($request)
     {
 
-        $validated = $request->validate([
-
-            'ppe_requirement' => 'required|string',
-
+        $data = $request->validate([
+            'ppe_requirement' => 'required',
         ]);
 
-        dd($validated);
+        $ppe_requirement = PpeRequirement::create($data);
 
-        PpeRequirement::create($validated);
+        if (!$ppe_requirement) {
 
-        return redirect()->route('ppe-requirements.index')->with('success', 'PPE Requirement created successfully.');
+            $notification = array(
+                'message' => 'Failed to create Job Requirement',
+                'alert-type' => 'error'
+            );
+        } else {
+            $notification = array(
+                'message' => 'Job Requirement Created!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
+
     }
+
+    public function update(Request $request, $id)
+    {
+
+        $data = $request->validate([
+            'ppe_requirement' => 'required',
+        ]);
+
+        $requirement = PpeRequirement::findOrFail($id);
+        $requirement->ppe_requirement = $data['ppe_requirement'];
+
+        if ($requirement->update()) {
+
+            $notification = array(
+                'message' => 'Job Requirement updated!',
+                'alert-type' => 'success'
+            );
+        }
+
+
+        return back()->with('success', 'Requirement updated');
+    }
+
+    public function destroy($id)
+    {
+        $requirement = PpeRequirement::find($id);
+        $requirement->delete();
+        return back()->with('success', 'Requirement deleted successfully');
+    }
+
 }
