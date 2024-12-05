@@ -65,7 +65,15 @@ class JobRequirementController extends Controller
     public function destroy($id)
     {
         $requirement = JobRequirement::find($id);
-        $requirement->delete();
-        return redirect()->back()->with('message', 'Requirement deleted successfully');
+
+        if ($requirement->delete()) {
+
+            $notification = array(
+                'message' => 'Job Requirement deleted!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
     }
 }

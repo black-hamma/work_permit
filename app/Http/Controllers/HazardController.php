@@ -36,7 +36,7 @@ class HazardController extends Controller
             );
         }
 
-        return back()->with('success', 'Hazard created');
+        return back()->with($notification);
 
     }
 
@@ -58,13 +58,20 @@ class HazardController extends Controller
             );
         }
 
-
-        return back()->with('success', 'Hazard updated!');
+        return back()->with($notification);
     }
     public function destroy($id)
     {
         $hazard = Hazard::find($id);
-        $hazard->delete();
-        return back()->with('success', 'Hazard deleted successfully');
+
+        if ($hazard->delete()) {
+
+            $notification = array(
+                'message' => 'Hazard updated!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
     }
 }

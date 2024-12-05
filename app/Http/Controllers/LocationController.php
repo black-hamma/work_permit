@@ -63,7 +63,15 @@ class LocationController extends Controller
     public function destroy($id)
     {
         $location = Location::find($id);
-        $location->delete();
-        return back()->with('success', 'Location deleted successfully');
+
+        if ($location->delete()) {
+
+            $notification = array(
+                'message' => 'Location deleted!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
     }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\JobRequirementController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\PermitController;
 use App\Http\Controllers\PpeRequirementController;
+use App\Http\Controllers\PrecautionaryMeasureController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -53,5 +54,9 @@ Route::delete('/job-requirements/{job_requirement}', [JobRequirementController::
 Route::any('/ppe-requirements', [PpeRequirementController::class, 'index'])->name('ppe-requirements.index');
 Route::post('/ppe-requirements/{ppe_requirement}', [PpeRequirementController::class, 'update'])->name('ppe-requirements.update');
 Route::delete('/ppe-requirements/{ppe_requirement}', [PpeRequirementController::class, 'destroy'])->name('ppe-requirements.destroy');
+
+Route::any('/precautionary-measures', [PrecautionaryMeasureController::class, 'index'])->name('precautionary-measures.index');
+Route::post('/precautionary-measures/{precautionary_measures}', [PrecautionaryMeasureController::class, 'update'])->name('precautionary-measures.update');
+Route::delete('/precautionary-measures/{precautionary_measures}', [PrecautionaryMeasureController::class, 'destroy'])->name('precautionary-measures.destroy');
 
 

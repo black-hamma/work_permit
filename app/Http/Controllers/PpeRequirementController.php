@@ -25,12 +25,12 @@ class PpeRequirementController extends Controller
         if (!$ppe_requirement) {
 
             $notification = array(
-                'message' => 'Failed to create Job Requirement',
+                'message' => 'Failed to create PPE Requirement',
                 'alert-type' => 'error'
             );
         } else {
             $notification = array(
-                'message' => 'Job Requirement Created!',
+                'message' => 'PPE Requirement Created!',
                 'alert-type' => 'success'
             );
         }
@@ -52,20 +52,27 @@ class PpeRequirementController extends Controller
         if ($requirement->update()) {
 
             $notification = array(
-                'message' => 'Job Requirement updated!',
+                'message' => 'PPE Requirement updated!',
                 'alert-type' => 'success'
             );
         }
 
-
-        return back()->with('success', 'Requirement updated');
+        return back()->with($notification);
     }
 
     public function destroy($id)
     {
         $requirement = PpeRequirement::find($id);
-        $requirement->delete();
-        return back()->with('success', 'Requirement deleted successfully');
+
+        if ($requirement->delete()) {
+
+            $notification = array(
+                'message' => 'PPE Requirement deleted!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
     }
 
 }

@@ -43,7 +43,7 @@
                                             <label for="name">First Name</label>
                                             <input type="text"
                                                 class="form-control{{ $errors->first('first_name') ? ' form-error' : '' }}"
-                                                name="first_name" placeholder="First Name" value="{{ old('start_date') }}">
+                                                name="first_name" placeholder="First Name" value="{{ old('first_name') }}">
                                         </div>
                                         @error('first_name')
                                             <div class="text-red">{{ $message }}</div>
@@ -70,7 +70,7 @@
                                             <label for="name">Email</label>
                                             <input type="email"
                                                 class="form-control{{ $errors->first('email') ? ' form-error' : '' }}"
-                                                name="first_name" placeholder="Email" value="{{ old('email') }}">
+                                                name="email" placeholder="Email" value="{{ old('email') }}">
                                         </div>
                                         @error('email')
                                             <div class="text-red">{{ $message }}</div>

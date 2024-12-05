@@ -58,12 +58,20 @@ class DepartmentController extends Controller
         }
 
 
-        return back()->with('success', 'Department updated!');
+        return back()->with($notification);
     }
     public function destroy($id)
     {
         $department = Department::find($id);
-        $department->delete();
-        return back()->with('success', 'Department deleted successfully');
+
+        if ($department->delete()) {
+
+            $notification = array(
+                'message' => 'Department deleted!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
     }
 }

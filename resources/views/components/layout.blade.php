@@ -283,11 +283,6 @@
                         </a>
                     </li>
 
-                    {{--  <li>
-                        <a href="{{ route('permits.index') }}">
-                            <i class="fa fa-pie-chart"></i> <span>Permits</span>
-                        </a>
-                    </li>  --}}
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-clipboard"></i>
@@ -299,7 +294,6 @@
                                     Permits</a>
                             </li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Approvals</a></li>
-                            {{--  <li><a href=""><i class="fa fa-circle-o"></i>Jobs</a></li>  --}}
                         </ul>
                     </li>
 
@@ -324,8 +318,7 @@
                                     Users
                                 </a>
                             </li>
-                            {{--  <li><a href=""><i class="fa fa-circle-o"></i>Roles </a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>Project </a></li>  --}}
+
                             <li><a href="{{ route('locations.index') }}"><i class="fa fa-circle-o"></i>Location</a>
                             </li>
                             <li><a href="{{ route('departments.index') }}"><i
@@ -336,8 +329,9 @@
                                     Requirements</a></li>
                             <li><a href="{{ route('ppe-requirements.index') }}"><i class="fa fa-circle-o"></i>PPE
                                     Requirements</a></li>
-                            <li><a href=""><i class="fa fa-circle-o"></i>Precautionary Measures</a></li>
-                            {{--  <li><a href=""><i class="fa fa-circle-o"></i>Jobs</a></li>  --}}
+                            <li><a href="{{ route('precautionary-measures.index') }}">
+                                    <i class="fa fa-circle-o"></i>Precautionary Measures</a>
+                            </li>
                         </ul>
                     </li>
 
@@ -421,6 +415,26 @@
 
 
     <script>
+        @if (Session::has('message'))
+            var type = "{{ Session::get('alert-type', 'info') }}"
+
+
+            switch (type) {
+                case 'info':
+                    toastr.info("{{ Session::get('message') }}");
+                    break;
+                case 'success':
+                    toastr.success("{{ Session::get('message') }}");
+                    break;
+                case 'warning':
+                    toastr.warning("{{ Session::get('message') }}");
+                    break;
+                case 'error':
+                    toastr.error("{{ Session::get('message') }}");
+                    break;
+            }
+        @endif
+
         $(".select2").select2();
         new DataTable('#example', {
             scrollX: true
@@ -503,27 +517,6 @@
             usernameList.splice(index, 1);
             renderUsernames();
         };
-
-
-        @if (Session::has('message'))
-            var type = "{{ Session::get('alert-type', 'info') }}"
-
-
-            switch (type) {
-                case 'info':
-                    toastr.info("{{ Session::get('message') }}");
-                    break;
-                case 'success':
-                    toastr.success("{{ Session::get('message') }}");
-                    break;
-                case 'warning':
-                    toastr.warning("{{ Session::get('message') }}");
-                    break;
-                case 'error':
-                    toastr.error("{{ Session::get('message') }}");
-                    break;
-            }
-        @endif
     </script>
 
 
