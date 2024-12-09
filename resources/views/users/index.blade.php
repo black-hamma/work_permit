@@ -1,7 +1,7 @@
 @extends('components.layout')
 
 @section('title')
-    {{ 'Permits' }}
+    {{ 'Users' }}
 @endsection
 
 @section('content')
@@ -15,8 +15,7 @@
             <li>
                 <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li><a href="#">Users</a></li>
-            <li class="active">All Permits</li>
+            <li class="active">Users</li>
         </ol>
     </section>
 
@@ -47,65 +46,52 @@
                             <thead>
                                 <tr>
                                     <th>Actions</th>
+                                    <th>Username</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>Email</th>
                                     <th>Company</th>
-                                    <th>Created</th>
+                                    <th>Role</th>
                                     <th>Status</th>
+                                    <th>Created</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-bitbucket"></i>
-                                        </a>
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <td>
+                                            <a href="{{ route('users.edit', $user->id) }}"
+                                                class="btn btn-sm btn-primary btn-xs">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-danger btn-xs">
+                                                <i class="fa fa-bitbucket"></i>
+                                            </a>
 
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </td>
-                                    <td>Tiger</td>
-                                    <td>Nixon</td>
-                                    <td>TNixon@gmail.com</td>
-                                    <td>Accountant</td>
-                                    <td>2011-04-25 13:00</td>
-                                    <td><span class="badge badge-flat bg-red">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-bitbucket"></i>
-                                        </a>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </td>
-                                    <td>Garrett</td>
-                                    <td>Winters</td>
-                                    <td>GWinters@gmail.com</td>
-                                    <td>Accountant</td>
-                                    <td>2011-04-25 17:00</td>
-                                    <td><span class="badge badge-flat bg-green">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-bitbucket"></i>
-                                        </a>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </td>
-                                    <td>Ashton</td>
-                                    <td>Cox</td>
-                                    <td>ACox@gmail.com</td>
-                                    <td>Junior Technical Author</td>
-                                    <td>2011-04-25 17:00</td>
-                                    <td><span class="badge badge-flat bg-red">Active</span></td>
-                                </tr>
+                                        </td>
+                                        <td>{{ $user->username }}</td>
+                                        <td>{{ $user->first_name }}</td>
+                                        <td>{{ $user->last_name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->company }}</td>
+                                        <td>
+                                            @if ($user->is_admin)
+                                                <span class="badge badge-flat bg-gray">Administrator</span>
+                                            @else
+                                                <span class="badge badge-flat bg-gray">Standard User</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($user->status)
+                                                <span class="badge badge-flat bg-green">Active</span>
+                                            @else
+                                                <span class="badge badge-flat bg-red">Disabled</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $user->created_at->diffForHumans() }}</td>
 
+                                    </tr>
+                                @endforeach
                             </tbody>
 
                         </table>

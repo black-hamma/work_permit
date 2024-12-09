@@ -292,12 +292,22 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"> -->
-                                <span class="hidden-xs">Admin</span>
+                                <span class="hidden-xs">{{ auth()->user()->last_name }}</span>
                             </a>
                             <ul class="dropdown-menu" style="width: 100px;">
                                 <!-- Menu Footer-->
                                 <li><a href="#">Profile</a></li>
-                                <li><a href="#">Sign out</a></li>
+                                <li>
+                                    <a href="#"
+                                        onclick="event.preventDefault(); document.getElementById('sign_out').submit();">Sign
+                                        out
+                                    </a>
+                                </li>
+
+                                <form action="{{ route('logout') }}" method="POST" id="sign_out">
+                                    @csrf
+
+                                </form>
                             </ul>
                         </li>
 
@@ -314,8 +324,8 @@
                 <ul class="sidebar-menu">
                     <li class="header">MAIN NAVIGATION</li>
                     <li class="active">
-                        <a href="">
-                            <i class="fa fa-dashboard"></i> <span>Home</span>
+                        <a href="{{ route('admin.dashboard') }}">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         </a>
                     </li>
 
@@ -339,37 +349,42 @@
                         </a>
                     </li>
 
-                    <li class="header">MANAGEMENT</li>
+                    @auth
+                        @if (auth()->user()->is_admin == 1)
+                            <li class="header">MANAGEMENT</li>
 
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-gears"></i>
-                            <span>Basic</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li>
-                                <a href="{{ route('users.index') }}">
-                                    <i class="fa fa-circle-o"></i>
-                                    Users
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-gears"></i>
+                                    <span>Basic</span>
+                                    <i class="fa fa-angle-left pull-right"></i>
                                 </a>
-                            </li>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="{{ route('users.index') }}">
+                                            <i class="fa fa-circle-o"></i>
+                                            Users
+                                        </a>
+                                    </li>
 
-                            <li><a href="{{ route('locations.index') }}"><i class="fa fa-circle-o"></i>Location</a>
+                                    <li><a href="{{ route('locations.index') }}"><i
+                                                class="fa fa-circle-o"></i>Location</a>
+                                    </li>
+                                    <li><a href="{{ route('departments.index') }}"><i
+                                                class="fa fa-circle-o"></i>Department</a></li>
+                                    <li><a href="{{ route('hazards.index') }}"><i class="fa fa-circle-o"></i>Hazard
+                                            Identification</a></li>
+                                    <li><a href="{{ route('job-requirements.index') }}"><i class="fa fa-circle-o"></i>Job
+                                            Requirements</a></li>
+                                    <li><a href="{{ route('ppe-requirements.index') }}"><i class="fa fa-circle-o"></i>PPE
+                                            Requirements</a></li>
+                                    <li><a href="{{ route('precautionary-measures.index') }}">
+                                            <i class="fa fa-circle-o"></i>Precautionary Measures</a>
+                                    </li>
+                                </ul>
                             </li>
-                            <li><a href="{{ route('departments.index') }}"><i
-                                        class="fa fa-circle-o"></i>Department</a></li>
-                            <li><a href="{{ route('hazards.index') }}"><i class="fa fa-circle-o"></i>Hazard
-                                    Identification</a></li>
-                            <li><a href="{{ route('job-requirements.index') }}"><i class="fa fa-circle-o"></i>Job
-                                    Requirements</a></li>
-                            <li><a href="{{ route('ppe-requirements.index') }}"><i class="fa fa-circle-o"></i>PPE
-                                    Requirements</a></li>
-                            <li><a href="{{ route('precautionary-measures.index') }}">
-                                    <i class="fa fa-circle-o"></i>Precautionary Measures</a>
-                            </li>
-                        </ul>
-                    </li>
+                        @endif
+                    @endauth
 
                 </ul>
             </section>

@@ -30,11 +30,6 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
-                                    @if (session('success'))
-                                        <div class="alert alert-success" role="alert">
-                                            {{ session('success') }}
-                                        </div>
-                                    @endif
 
                                     <div class="form-group">
                                         <label for="name">Hazard</label>

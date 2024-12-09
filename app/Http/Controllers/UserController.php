@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Hash;
 use Illuminate\Http\Request;
-use Barryvdh\DomPDF\Facade\Pdf; // Import DomPDF
+//use Barryvdh\DomPDF\Facade\Pdf; // Import DomPDF
 use Str;
 
 
 class UserController extends Controller
 {
+    public function dashboard()
+    {
+        return view('user.dashboard');
+    }
     public function index()
     {
-        return view("users.index");
+        $users = User::all();
+        return view("users.index", compact('users'));
     }
     public function create()
     {
@@ -35,36 +40,44 @@ class UserController extends Controller
         // Generate a random password
         $plainPassword = Str::random(10);
 
+        $first_name = $request->input('first_name');
+        $last_name = $request->input('last_name');
+
+        $username = strtolower(substr($first_name, 0, 1)) . strtolower($last_name);
+
         // Create the user
-        $user = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'email' => $request->email,
-            'company' => $request->company,
-            'phone' => $request->phone,
-            'is_admin' => $request->has('is_admin') ? 1 : 0, // Set to 1 if checked, else 0
-            'status' => false, // Default to active
-            'password' => Hash::make($plainPassword), // Replace this logic as needed
-        ]);
+        $user = new User();
 
-        dd($user);
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->username = $username;
+        $user->email = $request->email;
+        $user->company = $request->company;
+        $user->phone = $request->phone;
+        $user->is_admin = $request->has('is_admin') ? 1 : 0; // Set to 1 if checked, else 0
+        $user->status = true; // Default to active
+        $user->password = Hash::make($plainPassword); // Replace this logic as needed
 
+        if ($user->save()) {
+            $notification = array(
+                'message' => 'User created!',
+                'alert-type' => 'success'
+            );
+        }
 
+        return redirect()->route('users.index')->with($notification);
+    }
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
 
-        // Generate PDF
-        // $pdf = Pdf::loadView('pdf.user', [
-        //     'user' => $user,
-        //     'password' => $plainPassword, // Pass the plain text password to the view
-        // ]);
+        return view("users.edit", compact('user'));
+    }
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
 
-        // Pass user data and plain password to a view for confirmation
-        // return view('users.confirm', [
-        //     'user' => $user,
-        //     'password' => $plainPassword,
-        // ]);
-
-        // Download PDF (or use `stream` to display in-browser)
-        //return $pdf->download('user-details.pdf');
-        //dd($user);
+        dd($request->all());
+        return view("users.edit", compact('user'));
     }
 }
