@@ -34,6 +34,7 @@ Route::post('permits', [PermitController::class, 'store'])->name('permits.store'
 Route::get('/user', [UserController::class, 'index'])->name('users.index');
 Route::get('/user/create', [UserController::class, 'create'])->name('users.create');
 Route::post('/user', [UserController::class, 'store'])->name('users.store');
+Route::post('/users/{user}/generate-pdf', [UserController::class, 'generatePdf'])->name('users.generate-pdf');
 
 Route::any('/location', [LocationController::class, 'index'])->name('locations.index');
 Route::post('/location/{location}', [LocationController::class, 'update'])->name('locations.update');

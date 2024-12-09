@@ -67,10 +67,11 @@
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="col-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="name">Email</label>
+                                            <label for="email">Email</label>
                                             <input type="email"
                                                 class="form-control{{ $errors->first('email') ? ' form-error' : '' }}"
-                                                name="email" placeholder="Email" value="{{ old('email') }}">
+                                                name="email" id="email" placeholder="Email"
+                                                value="{{ old('email') }}">
                                         </div>
                                         @error('email')
                                             <div class="text-red">{{ $message }}</div>
@@ -78,10 +79,11 @@
                                     </div>
                                     <div class="col-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="name">Company</label>
+                                            <label for="company">Company</label>
                                             <input type="text"
                                                 class="form-control{{ $errors->first('company') ? ' form-error' : '' }}"
-                                                name="company" placeholder="Company" value="{{ old('company') }}">
+                                                name="company" id="company" placeholder="Company"
+                                                value="{{ old('company') }}">
                                         </div>
                                         @error('company')
                                             <div class="text-red">{{ $message }}</div>
@@ -94,7 +96,7 @@
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="col-6 col-md-6">
                                         <div class="form-group">
-                                            <label for="name">Phone</label>
+                                            <label for="phone">Phone</label>
                                             <input type="number"
                                                 class="form-control{{ $errors->first('phone') ? ' form-error' : '' }}"
                                                 name="phone" placeholder="Phone" value="{{ old('phone') }}">
@@ -105,20 +107,28 @@
                                     </div>
                                     <div class="col-6 col-md-6">
                                         <div class="form-group">
-                                            <label>Role</label>
-                                            <select class="form-control select2" name="role" style="width: 100%;">
+                                            <label>Is_Admin</label>
+                                            <br>
+                                            <label class="switch">
+                                                <input type="checkbox" name="is_admin" id="is_admin" value="1"
+                                                    {{ old('is_admin') ? 'checked' : '' }}>
+                                                <span class="slider round"></span>
+                                            </label>
+                                            {{-- <select class="form-control select2" name="role" style="width: 100%;">
                                                 <option selected="selected" value="User">User</option>
                                                 <option value="HSSE">HSSE</option>
                                                 <option value="Administrator">Administrator</option>
-                                            </select>
+                                            </select> --}}
                                         </div>
-                                        @error('role')
+                                        @error('is_admin')
                                             <div class="text-red">{{ $message }}</div>
                                         @enderror
                                     </div>
 
                                 </div>
                             </div>
+
+
                             <div class="row">
                                 <div class="col-md-8 col-md-offset-2">
                                     <div class="row">

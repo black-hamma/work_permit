@@ -67,7 +67,7 @@ class HazardController extends Controller
         if ($hazard->delete()) {
 
             $notification = array(
-                'message' => 'Hazard updated!',
+                'message' => 'Hazard deleted!',
                 'alert-type' => 'success'
             );
         }

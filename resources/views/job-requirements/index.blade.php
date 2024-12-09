@@ -22,84 +22,6 @@
     <!-- Main content -->
     <section class="content">
 
-        {{-- <div class="row">
-            <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="btn-group btn-group-sm">
-                                    <a href="{{ route('hazards.create') }}" class="add-new-link">
-                                        <i class="fa fa-plus"></i>
-                                        <b>ADD HAZARD</b>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-
-                        <table id="example" class="display" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <th>Actions</th>
-                                    <th>Hazard</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-bitbucket"></i>
-                                        </a>
-
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </td>
-                                    <td>Tiger</td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-bitbucket"></i>
-                                        </a>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </td>
-                                    <td>Workers receive safty induction & toolbox briefcase.</td>
-
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-bitbucket"></i>
-                                        </a>
-                                        <a class="btn btn-sm btn-bitbucket">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                    </td>
-                                    <td>Workers receive safty induction & toolbox briefcase.</td>
-
-                                </tr>
-
-                            </tbody>
-
-                        </table>
-
-                    </div>
-                    <!-- /.box-body -->
-                </div>
-                <!-- /.box -->
-            </div>
-            <!-- /.col -->
-        </div> --}}
         <div class="box">
             <div class="box-body">
 
@@ -160,8 +82,8 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('job-requirements.destroy', $requirement->id) }}"
-                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $requirement->id }}').submit();"
+                                <a href="#"
+                                    onclick="event.preventDefault(); if(confirm('Are you sure?')) document.getElementById('delete-form-{{ $requirement->id }}').submit();"
                                     class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
                                 <form id="delete-form-{{ $requirement->id }}" +
                                     action="{{ route('job-requirements.destroy', $requirement->id) }}" method="post">

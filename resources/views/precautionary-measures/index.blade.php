@@ -81,12 +81,13 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('precautionary-measures.destroy', $measure->id) }}"
-                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $measure->id }}').submit();"
-                                    class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
+                                <a onclick="event.preventDefault(); if(confirm('Are you sure?')) document.getElementById('delete-form-{{ $measure->id }}').submit();"
+                                    href="#" class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
                                 <form id="delete-form-{{ $measure->id }}" +
                                     action="{{ route('precautionary-measures.destroy', $measure->id) }}" method="post">
+
                                     @csrf @method('DELETE')
+
                                 </form>
                             </div>
 

@@ -145,30 +145,6 @@
             position: absolute;
         }
 
-        .add-new-link {
-            text-decoration: none;
-            color: #007bff;
-            font-size: 14px;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            /* outline: 1px solid #007bff; */
-            padding: 5px 10px;
-            border-radius: 2px;
-
-        }
-
-        .add-new-link i {
-            font-size: 12px !important;
-            margin-top: 2px;
-        }
-
-        .add-new-link:hover {
-            color: #367fa9;
-            outline: 1px solid #367fa9;
-            /* Darker shade on hover */
-        }
-
         .form-error,
         .form-error:focus {
             border: 1px solid #e74c3c;
@@ -177,6 +153,66 @@
         .modal-footer,
         .modal-header {
             padding: 10px;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .switch>input:checked+.slider {
+            background-color: #2196F3;
+        }
+
+        .switch>input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rounded sliders */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
         }
 
         @media screen and (max-width: 767px) {
@@ -415,6 +451,30 @@
 
 
     <script>
+        // function showConfirm(id) {
+        //     toastr.warning(`
+    //     Are you sure you want to delete this item?
+    //     <br><br>
+    //     <button type="button" class="btn btn-danger btn-sm" onclick="confirmDelete(${id})">Yes</button>
+    //     <button type="button" class="btn btn-secondary btn-sm" onclick="toastr.clear()">No</button>`,
+        //         "Confirmation", {
+        //             closeButton: true,
+        //             allowHtml: true,
+        //             timeOut: 0,
+        //             extendedTimeOut: 0,
+        //             tapToDismiss: true
+        //         });
+        // }
+
+        // function confirmDelete(id) {
+        //     document.getElementById(`delete-form-${id}`).submit();
+        //     toastr.clear();
+        // }
+        toastr.options = {
+            "closeButton": true,
+            "newestOnTop": true,
+            "progressBar": true,
+        }
         @if (Session::has('message'))
             var type = "{{ Session::get('alert-type', 'info') }}"
 

@@ -28,7 +28,6 @@ class PrecautionaryMeasureController extends Controller
                 'alert-type' => 'success'
             );
 
-
         } else {
 
             $notification = array(
@@ -60,7 +59,6 @@ class PrecautionaryMeasureController extends Controller
             );
         }
 
-
         return back()->with($notification);
     }
 
@@ -82,6 +80,7 @@ class PrecautionaryMeasureController extends Controller
             );
 
         }
+
         return back()->with($notification);
     }
 }

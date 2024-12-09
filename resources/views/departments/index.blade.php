@@ -30,12 +30,6 @@
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
 
-                                @if (session('success'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('success') }}
-                                    </div>
-                                @endif
-
                                 <div class="form-group">
                                     <label for="department">New Department</label>
                                     <input type="text"
@@ -81,8 +75,8 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('departments.destroy', $department->id) }}"
-                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $department->id }}').submit();"
+                                <a href="#"
+                                    onclick="event.preventDefault(); if(confirm('Are you sure?')) document.getElementById('delete-form-{{ $department->id }}').submit();"
                                     class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
                                 <form id="delete-form-{{ $department->id }}" +
                                     action="{{ route('departments.destroy', $department->id) }}" method="post">

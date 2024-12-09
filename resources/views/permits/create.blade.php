@@ -27,8 +27,13 @@
                 @csrf
                 <div class="col-md-12">
                     <div class="box">
+
                         <div class="box-header with-border text-blue">
                             <strong>JOB LOCATION</strong>
+                            <a href="{{ route('permits.index') }}" class="btn btn-sm btn-danger pull-right">
+                                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                <b>BACK</b>
+                            </a>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

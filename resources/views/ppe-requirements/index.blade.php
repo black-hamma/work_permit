@@ -81,9 +81,13 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('ppe-requirements.destroy', $requirement->id) }}"
-                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $requirement->id }}').submit();"
+                                <a href="#"
+                                    onclick="event.preventDefault(); if(confirm('Are you sure?')) document.getElementById('delete-form-{{ $requirement->id }}').submit();"
                                     class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
+                                {{-- <a href="#" class="btn btn-danger btn-xs"
+                                    onclick="showConfirm('{{ $requirement->id }}')">
+                                    <i class="fa fa-bitbucket"></i>
+                                </a> --}}
                                 <form id="delete-form-{{ $requirement->id }}" +
                                     action="{{ route('ppe-requirements.destroy', $requirement->id) }}" method="post">
                                     @csrf @method('DELETE')

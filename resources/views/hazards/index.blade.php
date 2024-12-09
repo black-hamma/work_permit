@@ -85,11 +85,11 @@
                                     <i class="fa fa-pencil"></i>
                                 </a>
 
-                                <a href="{{ route('hazards.destroy', $hazard->id) }}"
-                                    onclick="event.preventDefault(); document.getElementById('delete-form-{{ $hazard->id }}').submit();"
+                                <a href="#"
+                                    onclick="event.preventDefault(); if(confirm('Are you sure?')) document.getElementById('delete-form-{{ $hazard->id }}').submit();"
                                     class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
                                 <form id="delete-form-{{ $hazard->id }}" +
-                                    action="{{ route('hazards.destroy', $hazard->id) }}" method="post">
+                                    action="{{ route('hazards.destroy', $hazard->id) }}" method="POST">
                                     @csrf @method('DELETE')
                                 </form>
                             </div>
