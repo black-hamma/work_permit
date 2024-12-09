@@ -17,9 +17,6 @@
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('plugins/iCheck/square/blue.css') }}">
-    {{--
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>  --}}
 
 </head>
 
@@ -36,7 +33,8 @@
                 @csrf
                 <div class="form-group has-feedback">
                     <input type="email" name="email"
-                        class="form-control{{ $errors->first('email') ? ' form-error' : '' }}" placeholder="Email">
+                        class="form-control{{ $errors->first('email') ? ' form-error' : '' }}" placeholder="Email"
+                        value="{{ old('email') }}">
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     @error('email')
                         <div class="text-red">{{ $message }}</div>

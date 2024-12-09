@@ -64,9 +64,14 @@
                                                 class="btn btn-sm btn-primary btn-xs">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <a class="btn btn-sm btn-danger btn-xs">
+                                            <a class="btn btn-sm btn-danger btn-xs"
+                                                onclick="event.preventDefault(); if(confirm('Are you sure?')) document.getElementById('user-{{ $user->id }}').submit();">
                                                 <i class="fa fa-bitbucket"></i>
                                             </a>
+                                            <form id="user-{{ $user->id }}" +
+                                                action="{{ route('users.destroy', $user->id) }}" method="post">
+                                                @csrf @method('DELETE')
+                                            </form>
 
                                         </td>
                                         <td>{{ $user->username }}</td>

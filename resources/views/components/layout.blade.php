@@ -489,6 +489,7 @@
             "closeButton": true,
             "newestOnTop": true,
             "progressBar": true,
+
         }
         @if (Session::has('message'))
             var type = "{{ Session::get('alert-type', 'info') }}"

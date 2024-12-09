@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_admin')->default(false); // Default to 0 (false)
             $table->boolean('status')->default(true);   // Default to 1 (true)
             $table->string('password');
+            $table->boolean('force_password_change')->default(true);
             $table->rememberToken();
             $table->timestamps();
         });
@@ -39,7 +40,6 @@ class CreateUsersTable extends Migration
             'company' => 'MPS',
             'phone' => '0207603317',
             'is_admin' => true,
-            // 'status' => true,
             'password' => Hash::make('password'),
             'created_at' => now(),
             'updated_at' => now(),
@@ -51,9 +51,8 @@ class CreateUsersTable extends Migration
             'username' => 'jwobill',
             'email' => 'jwobill@mps-gh.com',
             'company' => 'MPS',
-            'phone' => '0207603317',
+            'phone' => '0207603318',
             'is_admin' => false,
-            // 'status' => true,
             'password' => Hash::make('password'),
             'created_at' => now(),
             'updated_at' => now(),

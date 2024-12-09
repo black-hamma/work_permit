@@ -79,6 +79,22 @@
                                     </div>
                                     <div class="col-6 col-md-6">
                                         <div class="form-group">
+                                            <label for="username">Username</label>
+                                            <input type="text"
+                                                class="form-control{{ $errors->first('username') ? ' form-error' : '' }}"
+                                                name="username" placeholder="Last Name" value="{{ $user->username }}">
+                                        </div>
+                                        @error('username')
+                                            <div class="text-red">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+                                    <div class="col-6 col-md-6">
+                                        <div class="form-group">
                                             <label for="company">Company</label>
                                             <input type="text"
                                                 class="form-control{{ $errors->first('company') ? ' form-error' : '' }}"
@@ -90,10 +106,6 @@
                                         @enderror
                                     </div>
 
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-8 col-md-offset-2">
                                     <div class="col-6 col-md-6">
                                         <div class="form-group">
                                             <label for="phone">Phone</label>
@@ -105,7 +117,13 @@
                                             <div class="text-red">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-6 col-md-1">
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-2">
+
+                                    <div class="col-6 col-md-2">
                                         <div class="form-group">
                                             <label>Is_Admin</label>
                                             <br>
@@ -120,7 +138,7 @@
                                             <div class="text-red">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <div class="col-6 col-md-4">
+                                    <div class="col-6 col-md-2">
                                         <div class="form-group">
                                             <label>Status</label>
                                             <br>

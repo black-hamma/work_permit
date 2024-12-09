@@ -38,7 +38,7 @@ class UserController extends Controller
         ]);
 
         // Generate a random password
-        $plainPassword = Str::random(10);
+        // $plainPassword = Str::random(10);
 
         $first_name = $request->input('first_name');
         $last_name = $request->input('last_name');
@@ -56,11 +56,11 @@ class UserController extends Controller
         $user->phone = $request->phone;
         $user->is_admin = $request->has('is_admin') ? 1 : 0; // Set to 1 if checked, else 0
         $user->status = true; // Default to active
-        $user->password = Hash::make($plainPassword); // Replace this logic as needed
+        $user->password = Hash::make('welcome01'); // Replace this logic as needed
 
         if ($user->save()) {
             $notification = array(
-                'message' => 'User created!',
+                'message' => 'User created',
                 'alert-type' => 'success'
             );
         }
@@ -77,7 +77,38 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
 
-        dd($request->all());
-        return view("users.edit", compact('user'));
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->company = $request->company;
+        $user->phone = $request->phone;
+        $user->is_admin = $request->has('is_admin') ? 1 : 0; // Set to 1 if checked, else 0
+        $user->status = $request->has('status') ? 1 : 0; // Default to active
+
+        if ($user->update($request->all())) {
+            $notification = array(
+                'message' => 'User updated',
+                'alert-type' => 'success'
+            );
+        }
+
+        return redirect()->route('users.index')->with($notification);
     }
+
+    public function destroy($id)
+    {
+        $user = User::findOrFail($id);
+
+        if ($user->delete()) {
+
+            $notification = array(
+                'message' => 'User deleted!',
+                'alert-type' => 'success'
+            );
+        }
+
+        return back()->with($notification);
+    }
+
 }

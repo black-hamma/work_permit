@@ -6,6 +6,7 @@ use App\Http\Controllers\HazardController;
 use App\Http\Controllers\JobRequirementController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PermitController;
 use App\Http\Controllers\PpeRequirementController;
 use App\Http\Controllers\PrecautionaryMeasureController;
@@ -24,11 +25,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Authentication Routes
-Route::prefix('auth')->group(function () {
-    Route::get('/', [LoginController::class, 'index'])->name('login');
-    Route::post('/', [LoginController::class, 'login']);
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
-});
+
+Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::post('/', [LoginController::class, 'login']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     // Admin Routes
@@ -56,7 +56,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user', [UserController::class, 'store'])->name('users.store');
     Route::get('/user/{user}', [UserController::class, 'edit'])->name('users.edit');
     Route::post('/user/{user}', [UserController::class, 'update']);
+    Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::post('/users/{user}/generate-pdf', [UserController::class, 'generatePdf'])->name('users.generate-pdf');
+
+    Route::get('password/change', [PasswordController::class, 'index'])->name('password.change');
+    Route::post('password/change', [PasswordController::class, 'update'])->name('password.update');
 
     Route::any('/location', [LocationController::class, 'index'])->name('locations.index');
     Route::post('/location/{location}', [LocationController::class, 'update'])->name('locations.update');
