@@ -11,4 +11,9 @@ class JobRequirement extends Model
     protected $fillable = [
         'job_requirement',
     ];
+
+    public function permits()
+    {
+        return $this->hasMany(Permit::class);
+    }
 }

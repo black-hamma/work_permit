@@ -40,20 +40,22 @@ class Permit extends Model
         'is_disclaimer',
     ];
 
-    protected static function boot()
+    public function location()
     {
-        parent::boot();
-
-        static::creating(function ($permit) {
-            // Retrieve the last job's code
-            $lastPermit = self::latest('id')->first();
-
-            // Extract the numeric part of the code and increment it
-            $lastSequence = $lastPermit ? (int) str_replace('PMT', '', $lastPermit->code) : 0;
-            $newSequence = $lastSequence + 1;
-
-            // Generate the new code
-            $permit->permit_code = 'PMT' . str_pad($newSequence, 6, '0', STR_PAD_LEFT);
-        });
+        return $this->belongsTo(Location::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+    public function jobRequirement()
+    {
+        return $this->belongsTo(JobRequirement::class);
+    }
+
 }

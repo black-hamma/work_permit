@@ -19,8 +19,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/AdminLTE.min.css') }}">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+
     <link rel="stylesheet" href="{{ asset('dist/css/skins/_all-skins.min.css') }}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{ asset('plugins/iCheck/flat/blue.css') }}">
@@ -232,9 +231,9 @@
             <!-- Logo -->
             <a href="" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
-                <span class="logo-mini">MPS</span>
+                <span class="logo-mini" style="font-size: 10px">HSEMS</span>
                 <!-- logo for regular state and mobile devices -->
-                <span class="logo-lg" style="font-size: small;">Meridian Port Services</span>
+                <span class="logo-lg" style="font-size: small;">HSE Management System</span>
             </a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top">
@@ -593,6 +592,26 @@
             usernameList.splice(index, 1);
             renderUsernames();
         };
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const userTypeSelect = document.getElementById('job_company');
+            const staffIdContainer = document.getElementById('staff_id_container');
+            const contractorNameContainer = document.getElementById('contract_name_container');
+
+            userTypeSelect.addEventListener('change', function() {
+                if (this.value === 'mps_employee') {
+                    staffIdContainer.style.display = 'block';
+                    contractorNameContainer.style.display = 'none';
+                } else if (this.value === 'contract_company') {
+                    contractorNameContainer.style.display = 'block';
+                    staffIdContainer.style.display = 'none';
+                } else {
+                    staffIdContainer.style.display = 'none';
+                    contractorNameContainer.style.display = 'none';
+                }
+            });
+        });
     </script>
 
 

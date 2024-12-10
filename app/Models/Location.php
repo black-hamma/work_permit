@@ -12,4 +12,13 @@ class Location extends Model
     protected $fillable = [
         'location'
     ];
+
+    // One-to-Many Relationship
+    public function permits()
+    {
+        return $this->hasMany(Permit::class);
+    }
+
+
+
 }

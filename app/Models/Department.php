@@ -12,4 +12,9 @@ class Department extends Model
     protected $fillable = [
         'department'
     ];
+
+    public function permits()
+    {
+        return $this->hasMany(Permit::class);
+    }
 }

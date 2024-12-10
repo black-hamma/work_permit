@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\Location;
 use App\Models\Permit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -16,7 +18,11 @@ class PermitController extends Controller
     }
     public function create()
     {
-        return view("permits.create");
+        $locations = Location::all();
+        $departments = Department::all();
+
+
+        return view("permits.create", compact('locations', 'departments'));
     }
     public function store(Request $request)
     {
@@ -25,9 +31,13 @@ class PermitController extends Controller
         $validated = $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'job_location' => 'required',
+            'job_location_id' => 'required|exists:job_locations,id',
+            [
+                'job_location_id.required' => 'The job location field is required.',
+                'job_location_id.exists' => 'The selected job location is invalid.',
+            ],
             'sub_location' => 'required',
-            'department' => 'required',
+            'department_id' => 'required|exists:department,id',
             'equipment_details' => 'required',
             'job_description' => 'required',
             'receiver_name' => 'required',

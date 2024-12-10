@@ -96,19 +96,21 @@
                                             placeholder="Job Location">
                                     </div>  --}}
                                         <div class="form-group">
-                                            <label>Job Location</label>
+                                            <label for="job_location_id">Job Location</label>
+
                                             <select
-                                                class="form-control{{ $errors->first('job_location') ? ' form-error' : '' }} select2"
-                                                style="width: 100%;" name="job_location">
-                                                <option>Select Job Location</option>
-                                                <option value="Location 1">Alaska</option>
-                                                <option value="Location 2">California</option>
-                                                <option value="Location 3">Delaware</option>
-                                                <option value="Location 4">Tennessee</option>
-                                                <option value="Location 5">Texas</option>
-                                                <option value="Location 6">Washington</option>
+                                                class="form-control{{ $errors->first('job_location_id') ? ' form-error' : '' }} select2"
+                                                style="width: 100%;" name="job_location_id" id="job_location_id">
+                                                <option value="">Select a Job Location</option>
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location->id }}"
+                                                        {{ old('job_location_id') == $location->id ? 'selected' : '' }}>
+                                                        {{ $location->location }}
+                                                    </option>
+                                                @endforeach
                                             </select>
-                                            @error('job_location')
+
+                                            @error('job_location_id')
                                                 <div class="text-red">{{ $message }}</div>
                                             @enderror
                                         </div>
@@ -133,15 +135,21 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Department</label>
-                                            <select class="form-control select2" style="width: 100%;" name="department">
-                                                <option>Select Department</option>
-                                                <option value="department 1">Alaska</option>
-                                                <option value="department 2">California</option>
-                                                <option value="department 3">Delaware</option>
-                                                <option value="department 4">Tennessee</option>
-                                                <option value="department 5">Texas</option>
-                                                <option value="department 6">Washington</option>
+                                            <select
+                                                class="form-control{{ $errors->first('department_id') ? ' form-error' : '' }} select2"
+                                                style="width: 100%;" name="department_id" id="department_id">
+                                                <option value="">Select a Department</option>
+                                                @foreach ($departments as $department)
+                                                    <option value="{{ $department->id }}"
+                                                        {{ old('department_id') == $location->id ? 'selected' : '' }}>
+                                                        {{ $department->department }}
+                                                    </option>
+                                                @endforeach
                                             </select>
+
+                                            @error('department_id')
+                                                <div class="text-red">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -193,18 +201,36 @@
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
+                                            <label for="job_company">Job Company</label>
+                                            <select class="form-control" id="job_company" name="job_company">
+                                                <option value="">Select Job Company</option>
+                                                <option value="contract_company">Contract Company</option>
+                                                <option value="mps_employee">MPS Employee</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {{--  <div class="col-md-3">
+                                        <div class="form-group">
                                             <label for="contract_company">Contract Company / MPS
                                                 Employer</label>
                                             <input type="text" class="form-control" id="contract_company"
                                                 placeholder="Contract Company / MPS Employer" name="contract_company"
                                                 value="{{ old('contract_company') }}">
                                         </div>
-                                    </div>
-                                    <div class="col-md-3">
+                                    </div>  --}}
+                                    <div class="col-md-3" id="staff_id_container" style="display: none;">
                                         <div class="form-group">
                                             <label for="staff_id">Staff ID</label>
                                             <input type="text" class="form-control" id="staff_id"
                                                 placeholder="Staff ID" name="staff_id" value="{{ old('staff_id') }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3" id="contract_name_container" style="display: none;">
+                                        <div class="form-group">
+                                            <label for="contract_name">Contract Company Name</label>
+                                            <input type="text" class="form-control"id="contract_name"
+                                                placeholder="Contract Company Name" name="contract_name"
+                                                value="{{ old('contract_name') }}">
                                         </div>
                                     </div>
 
