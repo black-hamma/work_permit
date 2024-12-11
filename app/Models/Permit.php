@@ -40,22 +40,30 @@ class Permit extends Model
         'is_disclaimer',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function location()
     {
         return $this->belongsTo(Location::class);
     }
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
     public function department()
     {
         return $this->belongsTo(Department::class);
     }
-    public function jobRequirement()
+    public function jobRequirements()
     {
-        return $this->belongsTo(JobRequirement::class);
+        return $this->belongsToMany(JobRequirement::class, 'job_requirement_permit');
     }
-
+    public function ppeRequirements()
+    {
+        return $this->belongsToMany(PpeRequirement::class, 'job_requirement_permit');
+    }
+    public function precautionaryMeasures()
+    {
+        return $this->belongsToMany(PrecautionaryMeasure::class, 'precautionary_measure_permit');
+    }
 }

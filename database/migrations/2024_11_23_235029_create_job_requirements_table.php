@@ -18,6 +18,13 @@ class CreateJobRequirementsTable extends Migration
             $table->string('job_requirement');
             $table->timestamps();
         });
+
+        Schema::create('job_requirement_permit', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('permit_id')->constrained()->onDelete('cascade');
+            $table->foreignId('job_requirement_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,5 +35,6 @@ class CreateJobRequirementsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('job_requirements');
+        Schema::dropIfExists('job_requirement_permit');
     }
 }

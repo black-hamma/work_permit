@@ -12,4 +12,9 @@ class PrecautionaryMeasure extends Model
     protected $fillable = [
         "precautionary_measure"
     ];
+
+    public function permits()
+    {
+        return $this->belongsToMany(Permit::class, 'job_requirement_permit');
+    }
 }

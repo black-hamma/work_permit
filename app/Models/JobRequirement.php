@@ -12,8 +12,12 @@ class JobRequirement extends Model
         'job_requirement',
     ];
 
+    // public function permits()
+    // {
+    //     return $this->hasMany(Permit::class);
+    // }
     public function permits()
     {
-        return $this->hasMany(Permit::class);
+        return $this->belongsToMany(Permit::class, 'job_requirement_permit');
     }
 }

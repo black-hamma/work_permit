@@ -18,6 +18,13 @@ class CreatePpeRequirementsTable extends Migration
             $table->string('ppe_requirement');
             $table->timestamps();
         });
+
+        Schema::create('ppe_requirement_permit', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('permit_id')->constrained()->onDelete('cascade');
+            $table->foreignId('ppe_requirement_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,5 +35,6 @@ class CreatePpeRequirementsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('ppe_requirements');
+        Schema::dropIfExists('ppe_requirement_permit');
     }
 }

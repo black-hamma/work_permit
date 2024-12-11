@@ -101,7 +101,7 @@
                                             <select
                                                 class="form-control{{ $errors->first('job_location_id') ? ' form-error' : '' }} select2"
                                                 style="width: 100%;" name="job_location_id" id="job_location_id">
-                                                <option value="">Select a Job Location</option>
+                                                <option value="">Select ...</option>
                                                 @foreach ($locations as $location)
                                                     <option value="{{ $location->id }}"
                                                         {{ old('job_location_id') == $location->id ? 'selected' : '' }}>
@@ -138,7 +138,7 @@
                                             <select
                                                 class="form-control{{ $errors->first('department_id') ? ' form-error' : '' }} select2"
                                                 style="width: 100%;" name="department_id" id="department_id">
-                                                <option value="">Select a Department</option>
+                                                <option value="">Select ...</option>
                                                 @foreach ($departments as $department)
                                                     <option value="{{ $department->id }}"
                                                         {{ old('department_id') == $location->id ? 'selected' : '' }}>
@@ -178,20 +178,24 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="job_description">Job Description</label>
-                                            <input type="text" class="form-control" id="job_description"
-                                                name="job_description" placeholder="Job Description"
+                                            <input type="text"
+                                                class="form-control{{ $errors->first('job_description') ? ' form-error' : '' }}"
+                                                id="job_description" name="job_description" placeholder="Job Description"
                                                 value="{{ old('job_description') }}">
+                                            @error('job_description')
+                                                <div class="text-red">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="receiver_name">Name of Receiver</label>
                                             <input type="text" class="form-control" id="receiver_name"
@@ -199,33 +203,25 @@
                                                 value="{{ old('receiver_name') }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="job_company">Job Company</label>
                                             <select class="form-control" id="job_company" name="job_company">
-                                                <option value="">Select Job Company</option>
+                                                <option value="">Select ...</option>
                                                 <option value="contract_company">Contract Company</option>
                                                 <option value="mps_employee">MPS Employee</option>
                                             </select>
                                         </div>
                                     </div>
-                                    {{--  <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label for="contract_company">Contract Company / MPS
-                                                Employer</label>
-                                            <input type="text" class="form-control" id="contract_company"
-                                                placeholder="Contract Company / MPS Employer" name="contract_company"
-                                                value="{{ old('contract_company') }}">
-                                        </div>
-                                    </div>  --}}
-                                    <div class="col-md-3" id="staff_id_container" style="display: none;">
+
+                                    <div class="col-md-4" id="staff_id_container" style="display: none;">
                                         <div class="form-group">
                                             <label for="staff_id">Staff ID</label>
                                             <input type="text" class="form-control" id="staff_id"
                                                 placeholder="Staff ID" name="staff_id" value="{{ old('staff_id') }}">
                                         </div>
                                     </div>
-                                    <div class="col-md-3" id="contract_name_container" style="display: none;">
+                                    <div class="col-md-4" id="contract_name_container" style="display: none;">
                                         <div class="form-group">
                                             <label for="contract_name">Contract Company Name</label>
                                             <input type="text" class="form-control"id="contract_name"
@@ -238,7 +234,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-8">
+                                    <div class="col-md-6">
 
                                         <div class="form-group">
                                             <label>Workers names</label>
@@ -264,30 +260,7 @@
                                         </div>
 
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="upload-container">
-                                            <p>Drag and drop your files here or <label for="fileInput">click to
-                                                    upload</label></p>
-                                            <input type="file" id="fileInput" multiple
-                                                accept=".pdf,.docx,.jpg,.jpeg,.png">
-                                            <ul class="file-list" id="fileList"></ul>
-                                            {{-- <div class="actions">
-                                                <button id="clearAll">Clear All</button>
-                                                <button id="submit">Submit</button>
-                                            </div> --}}
-                                        </div>
-                                        {{-- <div class="form-group">
-                                            <label for="risk_assessment">Risk Assessment / Job Safety Analysis</label>
-                                            <input type="file" id="risk_assessment" name="risk_assessment">
-
-                                            <p class="help-block">Select file to upload here.</p>
-                                        </div> --}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Permit(s) Required</label>
                                             <select class="form-control select2 select2-hidden-accessible" multiple=""
@@ -306,6 +279,30 @@
                                         </div>
                                     </div>
 
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-12">
+                                        <div class="upload-container">
+                                            <p>Drag and drop your files here or <label for="fileInput">click to
+                                                    upload</label></p>
+                                            <input type="file" id="fileInput" multiple
+                                                accept=".pdf,.docx,.jpg,.jpeg,.png">
+                                            <ul class="file-list" id="fileList"></ul>
+                                            {{-- <div class="actions">
+                                                <button id="clearAll">Clear All</button>
+                                                <button id="submit">Submit</button>
+                                            </div> --}}
+                                        </div>
+                                        {{-- <div class="form-group">
+                                            <label for="risk_assessment">Risk Assessment / Job Safety Analysis</label>
+                                            <input type="file" id="risk_assessment" name="risk_assessment">
+
+                                            <p class="help-block">Select file to upload here.</p>
+                                        </div> --}}
+                                    </div>
                                 </div>
                             </div>
 
@@ -328,26 +325,7 @@
                                             </label>
                                         </div>
                                     </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                {{ old('hazard_identification') == 'on' ? 'checked' : '' }}
-                                                name="hazard_identification[]" value="Hazardous substance"
-                                                id="checkbox2">
-                                            <label class="form-check-label" for="checkbox2">
-                                                Hazardous substance
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value=""
-                                                id="checkbox3" name="hazard_identification[]">
-                                            <label class="form-check-label" for="checkbox3">
-                                                Buried services
-                                            </label>
-                                        </div>
-                                    </div>
+
 
                                 </div>
                             </div>
@@ -365,93 +343,23 @@
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements1"
-                                                id="job_requirements1" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements1">
-                                                Fall from height
-                                            </label>
+                                    @foreach ($job_requirements as $job_requirement)
+                                        <div class="col-6 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="{{ $job_requirement->id }}"
+                                                    id="job_requirement-{{ $job_requirement->id }}"
+                                                    name="job_requirements[]">
+                                                <label class="form-check-label"
+                                                    for="job_requirement-{{ $job_requirement->id }}">
+                                                    {{ $job_requirement->job_requirement }}
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements2"
-                                                id="job_requirements2" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements2">
-                                                Hazardous substance
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements3"
-                                                id="job_requirements3" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements3">
-                                                Buried services
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements4"
-                                                id="job_requirements4" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements4">
-                                                Gas / Fumes
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements5"
-                                                id="job_requirements5" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements5">
-                                                Environmental pollution
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements6"
-                                                id="job_requirements6" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements6">
-                                                High/Low Temp
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements8"
-                                                id="job_requirements8" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements8">
-                                                Lone working
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirement9"
-                                                id="job_requirement9" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirement9">
-                                                Overhead service
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="job_requirements7"
-                                                id="job_requirements7" name="job_requirements[]">
-                                            <label class="form-check-label" for="job_requirements7">
-                                                Oxygen deficiency
-                                            </label>
-                                        </div>
-                                    </div>
+                                    @endforeach
 
                                 </div>
                             </div>
-
-
-
 
                         </div>
                         <!-- /.box-body -->
@@ -461,69 +369,26 @@
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
+
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ppe_requirements1"
-                                                id="ppe_requirements1" name="ppe_requirements[]">
-                                            <label class="form-check-label" for="ppe_requirements1">
-                                                Fall from height
-                                            </label>
+                                    @foreach ($ppe_requirements as $ppe_requirement)
+                                        <div class="col-6 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="{{ $ppe_requirement->id }}"
+                                                    id="ppe_requirement-{{ $ppe_requirement->id }}"
+                                                    name="ppe_requirements[]">
+                                                <label class="form-check-label"
+                                                    for="ppe_requirement-{{ $ppe_requirement->id }}">
+                                                    {{ $ppe_requirement->ppe_requirement }}
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ppe_requirements2"
-                                                id="ppe_requirements2" name="ppe_requirements[]">
-                                            <label class="form-check-label" for="ppe_requirements2">
-                                                Hazardous substance
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ppe_requirements3"
-                                                id="ppe_requirements3" name="ppe_requirements[]">
-                                            <label class="form-check-label" for="ppe_requirements3">
-                                                Buried services
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ppe_requirements4"
-                                                id="ppe_requirements4" name="ppe_requirements[]">
-                                            <label class="form-check-label" for="ppe_requirements4">
-                                                Gas / Fumes
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ppe_requirements5"
-                                                id="ppe_requirements5" name="ppe_requirements[]">
-                                            <label class="form-check-label" for="ppe_requirements5">
-                                                Environmental pollution
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="ppe_requirements6"
-                                                id="ppe_requirements6" name="ppe_requirements[]">
-                                            <label class="form-check-label" for="ppe_requirements6">
-                                                High/Low Temp
-                                            </label>
-                                        </div>
-                                    </div>
-
+                                    @endforeach
 
                                 </div>
                             </div>
-
-
-
 
                         </div>
                         <!-- /.box-body -->
@@ -533,92 +398,31 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure0" id="precautionary_measure0"
-                                                name="precautionary_measure[]">
-                                            <label class="form-check-label" for="precautionary_measure0">
-                                                Fall from height
-                                            </label>
+                                <div class="col-md-8">
+                                    @foreach ($precautionary_measures as $precautionary_measure)
+                                        <div class="col-6 col-md-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox"
+                                                    value="{{ $precautionary_measure->id }}"
+                                                    id="precautionary_measure-{{ $precautionary_measure->id }}"
+                                                    name="precautionary_measures[]">
+                                                <label class="form-check-label"
+                                                    for="precautionary_measure-{{ $precautionary_measure->id }}">
+                                                    {{ $precautionary_measure->precautionary_measure }}
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure1" id="precautionary_measure1"
-                                                name="precautionary_measure[]">
-                                            <label class="form-check-label" for="precautionary_measure1">
-                                                Hazardous substance
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure2" id="precautionary_measure2"
-                                                name="precautionary_measure[]">
-                                            <label class="form-check-label" for="precautionary_measure2">
-                                                Buried services
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure3" id="precautionary_measure3">
-                                            <label class="form-check-label" for="precautionary_measure3">
-                                                Gas / Fumes
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure4" id="precautionary_measure4"
-                                                name="precautionary_measure[]">
-                                            <label class="form-check-label" for="precautionary_measure4">
-                                                Environmental pollution
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure5" id="precautionary_measure5"
-                                                name="precautionary_measure[]">
-                                            <label class="form-check-label" for="precautionary_measure5">
-                                                High/Low Temp
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure6" id="precautionary_measure6"
-                                                name="precautionary_measure[]">
-                                            <label class="form-check-label" for="precautionary_measure6">
-                                                Lone working
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-6 col-md-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox"
-                                                value="precautionary_measure7" id="precautionary_measure7"
-                                                name="precautionary_measure[]">
-                                            <label class="form-check-label" for="precautionary_measure7">
-                                                Overhead service
-                                            </label>
-                                        </div>
-                                    </div>
+                                    @endforeach
 
                                 </div>
+                                <div class="col-md-2">
+                                    <div class="checkbox icheck">
+                                        <label>
+                                            <input type="checkbox"> Remember Me
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-
-
-
 
                         </div>
                         <!-- /.box-body -->

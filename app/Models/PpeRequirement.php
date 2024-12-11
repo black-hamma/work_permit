@@ -12,4 +12,9 @@ class PpeRequirement extends Model
     protected $fillable = [
         'ppe_requirement',
     ];
+
+    public function permits()
+    {
+        return $this->belongsToMany(Permit::class, 'ppe_requirement_permit');
+    }
 }

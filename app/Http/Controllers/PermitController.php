@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\JobRequirement;
 use App\Models\Location;
 use App\Models\Permit;
+use App\Models\PpeRequirement;
+use App\Models\PrecautionaryMeasure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Str;
@@ -20,34 +23,41 @@ class PermitController extends Controller
     {
         $locations = Location::all();
         $departments = Department::all();
+        $job_requirements = JobRequirement::all();
+        $ppe_requirements = PpeRequirement::all();
+        $precautionary_measures = PrecautionaryMeasure::all();
 
-
-        return view("permits.create", compact('locations', 'departments'));
+        return view("permits.create", compact('locations', 'departments', 'job_requirements', 'ppe_requirements', 'precautionary_measures'));
     }
     public function store(Request $request)
     {
         $permit_required = $request->permit_required;
 
+        //dd($request->all());
+
         $validated = $request->validate([
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
-            'job_location_id' => 'required|exists:job_locations,id',
-            [
-                'job_location_id.required' => 'The job location field is required.',
-                'job_location_id.exists' => 'The selected job location is invalid.',
-            ],
-            'sub_location' => 'required',
-            'department_id' => 'required|exists:department,id',
             'equipment_details' => 'required',
             'job_description' => 'required',
             'receiver_name' => 'required',
-            'contract_company' => 'required',
+            'contract_company' => 'nullable',
             'workers_names' => 'required',
-            'staff_id' => 'required',
-            'risk_assessment' => 'required',
+            'staff_id' => 'nullable',
+            'risk_assessment' => 'nullable',
+            'sub_location' => 'required',
             'permit_required' => 'required',
+
+
+
+            'job_requirements' => 'nullable|array',
+            'job_requirements.*' => 'exists:job_requirements,id',
+
+
+
+            'department_id' => 'required|exists:department,id',
+
             'hazard_identification' => 'required',
-            'job_requirements' => 'required',
             'ppe_requirements' => 'required',
             'precautionary_measure' => 'required',
             'is_disclaimer' => 'required|boolean'
@@ -93,6 +103,11 @@ class PermitController extends Controller
 
 
         //dd('PMT-' . now()->format('YmdHis') . random_int(100, 999))
+        // 'job_location_id' => 'required|exists:job_locations,id',
+        // [
+        //     'job_location_id.required' => 'The job location field is required.',
+        //     'job_location_id.exists' => 'The selected job location is invalid.',
+        // ],
 
     }
 }

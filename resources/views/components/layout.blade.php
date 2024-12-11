@@ -50,6 +50,11 @@
     <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('toastr/build/toastr.min.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+
 
     <script src="{{ asset('toastr/build/toastr.min.js') }}"></script>
 
@@ -555,6 +560,8 @@
     <script src="{{ asset('dist/js/pages/dashboard.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('dist/js/demo.js') }}"></script>
+    <script src="{{ asset('plugins/iCheck/icheck.min.js') }}"></script>
+
 
 
     <script>
@@ -577,6 +584,13 @@
         //     document.getElementById(`delete-form-${id}`).submit();
         //     toastr.clear();
         // }
+        $(function() {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
         toastr.options = {
             "closeButton": true,
             "newestOnTop": true,
@@ -706,7 +720,7 @@
             });
         });
 
-        //file upload
+        //start file upload
         const fileInput = document.getElementById('fileInput');
         const fileList = document.getElementById('fileList');
         const clearAllButton = document.getElementById('clearAll');
@@ -722,7 +736,7 @@
             fileInfo.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
 
             const removeButton = document.createElement('button');
-            removeButton.textContent = 'x';
+            removeButton.textContent = 'Remove';
             removeButton.classList.add('file-remove-btn');
             removeButton.addEventListener('click', () => listItem.remove());
 
@@ -735,6 +749,8 @@
             fileList.innerHTML = '';
             fileInput.value = '';
         });
+
+        //End file upload
     </script>
 
 
