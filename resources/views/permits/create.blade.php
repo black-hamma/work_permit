@@ -265,12 +265,23 @@
 
                                     </div>
                                     <div class="col-md-4">
-                                        <div class="form-group">
+                                        <div class="upload-container">
+                                            <p>Drag and drop your files here or <label for="fileInput">click to
+                                                    upload</label></p>
+                                            <input type="file" id="fileInput" multiple
+                                                accept=".pdf,.docx,.jpg,.jpeg,.png">
+                                            <ul class="file-list" id="fileList"></ul>
+                                            {{-- <div class="actions">
+                                                <button id="clearAll">Clear All</button>
+                                                <button id="submit">Submit</button>
+                                            </div> --}}
+                                        </div>
+                                        {{-- <div class="form-group">
                                             <label for="risk_assessment">Risk Assessment / Job Safety Analysis</label>
                                             <input type="file" id="risk_assessment" name="risk_assessment">
 
                                             <p class="help-block">Select file to upload here.</p>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>

@@ -214,6 +214,97 @@
             border-radius: 50%;
         }
 
+        //upload
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .upload-container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border: 2px dashed #007BFF;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .upload-container:hover {
+            background-color: #f0f8ff;
+        }
+
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-container label {
+            font-size: 16px;
+            color: #007BFF;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .file-list {
+            margin-top: 20px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .file-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .file-list li span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 70%;
+        }
+
+        .file-list .file-remove-btn {
+            background: #FF5C5C;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .file-list .file-remove-btn:hover {
+            background: #ff3333;
+        }
+
+        .actions {
+            margin-top: 20px;
+        }
+
+        .actions button {
+            background: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .actions button:hover {
+            background: #0056b3;
+        }
+
+
+
+        //upload
+
         @media screen and (max-width: 767px) {
             div.dt-container div.dt-layout-row:not(.dt-layout-table) {
                 display: flex;
@@ -331,12 +422,14 @@
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-clipboard"></i>
-                            <span>Permits</span>
+                            <span>Permits Request</span>
                             <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="{{ route('permits.index') }}"><i class="fa fa-circle-o"></i> Work
-                                    Permits</a>
+                            <li>
+                                <a href="{{ route('permits.index') }}"><i class="fa fa-circle-o"></i>
+                                    Job Safety Permits
+                                </a>
                             </li>
                             <li><a href=""><i class="fa fa-circle-o"></i>Approvals</a></li>
                         </ul>
@@ -344,7 +437,7 @@
 
                     <li>
                         <a href="">
-                            <i class="fa fa-briefcase"></i> <span>Jobs</span>
+                            <i class="fa fa-briefcase"></i> <span>Jobs Monitoring</span>
                         </a>
                     </li>
 
@@ -611,6 +704,36 @@
                     contractorNameContainer.style.display = 'none';
                 }
             });
+        });
+
+        //file upload
+        const fileInput = document.getElementById('fileInput');
+        const fileList = document.getElementById('fileList');
+        const clearAllButton = document.getElementById('clearAll');
+
+        fileInput.addEventListener('change', () => {
+            Array.from(fileInput.files).forEach(file => addFileToList(file));
+        });
+
+        function addFileToList(file) {
+            const listItem = document.createElement('li');
+
+            const fileInfo = document.createElement('span');
+            fileInfo.textContent = `${file.name} (${(file.size / 1024).toFixed(2)} KB)`;
+
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'x';
+            removeButton.classList.add('file-remove-btn');
+            removeButton.addEventListener('click', () => listItem.remove());
+
+            listItem.appendChild(fileInfo);
+            listItem.appendChild(removeButton);
+            fileList.appendChild(listItem);
+        }
+
+        clearAllButton.addEventListener('click', () => {
+            fileList.innerHTML = '';
+            fileInput.value = '';
         });
     </script>
 
