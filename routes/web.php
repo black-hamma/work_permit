@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\HazardController;
+use App\Http\Controllers\HazardIdentificationIdentificationController;
 use App\Http\Controllers\JobRequirementController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\LoginController;
@@ -70,9 +70,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/department/{department}', [DepartmentController::class, 'update'])->name('departments.update');
     Route::delete('/department/{department}', [DepartmentController::class, 'destroy'])->name('departments.destroy');
 
-    Route::any('/hazards', [HazardController::class, 'index'])->name('hazards.index');
-    Route::post('/hazards/{hazard}', [HazardController::class, 'update'])->name('hazards.update');
-    Route::delete('/hazards/{hazard}', [HazardController::class, 'destroy'])->name('hazards.destroy');
+    Route::any('/HazardIdentifications', [HazardIdentificationIdentificationController::class, 'index'])->name('HazardIdentifications.index');
+    Route::post('/HazardIdentifications/{HazardIdentification}', [HazardIdentificationIdentificationController::class, 'update'])->name('HazardIdentifications.update');
+    Route::delete('/HazardIdentifications/{HazardIdentification}', [HazardIdentificationIdentificationController::class, 'destroy'])->name('HazardIdentifications.destroy');
 
     Route::any('/job-requirements', [JobRequirementController::class, 'index'])->name('job-requirements.index');
     Route::post('/job-requirements/{job_requirement}', [JobRequirementController::class, 'update'])->name('job-requirements.update');

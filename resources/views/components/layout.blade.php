@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" type="image/x-icon" href="{{ asset('dist/img/mps-logo.png') }}">
-    <title>MPS | @yield('title')</title>
+    <title>HSE Management System | @yield('title')</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -469,7 +469,8 @@
                                     </li>
                                     <li><a href="{{ route('departments.index') }}"><i
                                                 class="fa fa-circle-o"></i>Department</a></li>
-                                    <li><a href="{{ route('hazards.index') }}"><i class="fa fa-circle-o"></i>Hazard
+                                    <li><a href="{{ route('HazardIdentifications.index') }}"><i
+                                                class="fa fa-circle-o"></i>HazardIdentification
                                             Identification</a></li>
                                     <li><a href="{{ route('job-requirements.index') }}"><i class="fa fa-circle-o"></i>Job
                                             Requirements</a></li>

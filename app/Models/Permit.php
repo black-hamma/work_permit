@@ -12,7 +12,7 @@ class Permit extends Model
     protected $casts = [
         'workers_names' => 'array',
         'required_permits' => 'array',
-        'hazard_identification' => 'array',
+        'HazardIdentification_identification' => 'array',
         'job_requirements' => 'array',
         'ppe_requirements' => 'array',
         'precautionary_measure' => 'array',
@@ -33,7 +33,7 @@ class Permit extends Model
         'permit_code',
         'workers_names',
         'required_permits',
-        'hazard_identification',
+        'HazardIdentification_identification',
         'job_requirements',
         'ppe_requirements',
         'precautionary_measure',
@@ -65,5 +65,9 @@ class Permit extends Model
     public function precautionaryMeasures()
     {
         return $this->belongsToMany(PrecautionaryMeasure::class, 'precautionary_measure_permit');
+    }
+    public function hazardIdentifications()
+    {
+        return $this->belongsToMany(HazardIdentification::class, 'hazard_identifications_permit');
     }
 }

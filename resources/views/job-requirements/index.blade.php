@@ -9,7 +9,7 @@
     <section class="content-header">
         <h1>
             Job Requirements
-            {{-- <small>All Hazards</small> --}}
+            {{-- <small>All HazardIdentifications</small> --}}
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -137,7 +137,7 @@
                     <div class="box-header with-border">
                         <span class="username">Environmental pollution</span>
                         <div class="box-tools" style="margin-top: 5px">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
+                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_HazardIdentification">
                                 <i class="fa fa-pencil"></i>
                             </a>
 
@@ -153,7 +153,7 @@
                     <div class="box-header with-border">
                         <span class="username">Environmental pollution</span>
                         <div class="box-tools" style="margin-top: 5px">
-                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_hazard">
+                            <a class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit_HazardIdentification">
                                 <i class="fa fa-pencil"></i>
                             </a>
 

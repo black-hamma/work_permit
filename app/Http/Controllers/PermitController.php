@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Department;
+use App\Models\HazardIdentification;
 use App\Models\JobRequirement;
 use App\Models\Location;
 use App\Models\Permit;
@@ -26,8 +27,9 @@ class PermitController extends Controller
         $job_requirements = JobRequirement::all();
         $ppe_requirements = PpeRequirement::all();
         $precautionary_measures = PrecautionaryMeasure::all();
+        $hazard_identifications = HazardIdentification::all();
 
-        return view("permits.create", compact('locations', 'departments', 'job_requirements', 'ppe_requirements', 'precautionary_measures'));
+        return view("permits.create", compact('locations', 'departments', 'job_requirements', 'ppe_requirements', 'precautionary_measures', 'hazard_identifications'));
     }
     public function store(Request $request)
     {
@@ -57,7 +59,7 @@ class PermitController extends Controller
 
             'department_id' => 'required|exists:department,id',
 
-            'hazard_identification' => 'required',
+            'HazardIdentification_identification' => 'required',
             'ppe_requirements' => 'required',
             'precautionary_measure' => 'required',
             'is_disclaimer' => 'required|boolean'
@@ -85,7 +87,7 @@ class PermitController extends Controller
         $permit->workers_names = $workers_names;
         $permit->risk_assessment = $validated['risk_assessment'];
         $permit->permit_required = $validated['permit_required'];
-        $permit->hazard_identification = $validated['hazard_identification'];
+        $permit->HazardIdentification_identification = $validated['HazardIdentification_identification'];
         $permit->job_requirements = $validated['job_requirements'];
         $permit->ppe_requirements = $validated['ppe_requirements'];
         $permit->precautionary_measure = $validated['precautionary_measure'];

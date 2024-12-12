@@ -271,7 +271,7 @@
                                                 <option>Confined Space</option>
                                                 <option>Electric work</option>
                                                 <option>Work at height</option>
-                                                <option>Hazardous / Dangerous substance</option>
+                                                <option>HazardIdentificationous / Dangerous substance</option>
                                                 <option>On or Near water</option>
                                                 <option>Hot work</option>
                                                 <option>Pressure systems</option>
@@ -310,31 +310,24 @@
                         <!-- /.box-body -->
 
                         <div class="box-header with-border text-blue">
-                            <strong>HAZARD IDENTIFICATION</strong>
+                            <strong>HazardIdentification IDENTIFICATION</strong>
                         </div>
-                        <!-- /.box-header -->
                         <div class="box-body">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="col-6 col-md-3">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox"
-                                                name="hazard_identification[]" value="Fall from height" id="checkbox1">
+                                                name="HazardIdentification_identification[]" value="Fall from height"
+                                                id="checkbox1">
                                             <label class="form-check-label" for="checkbox1">
                                                 Fall from height
                                             </label>
                                         </div>
                                     </div>
-
-
                                 </div>
                             </div>
-
-
-
-
                         </div>
-                        <!-- /.box-body -->
 
                         <div class="box-header with-border text-blue">
                             <strong>JOB REQUIREMENTS</strong>
@@ -449,7 +442,8 @@
                                             </label>
                                         </div>
                                         <p class="text-red">
-                                            By checking this box, I confirm that I have thoroughly reviewed the hazard
+                                            By checking this box, I confirm that I have thoroughly reviewed the
+                                            HazardIdentification
                                             identifications and job requirements, possess the necessary personal protective
                                             equipment (PPE), and have taken all appropriate precautionary measures. I also
                                             acknowledge that MPS is not liable for any consequences resulting from my
