@@ -469,9 +469,8 @@
                                     </li>
                                     <li><a href="{{ route('departments.index') }}"><i
                                                 class="fa fa-circle-o"></i>Department</a></li>
-                                    <li><a href="{{ route('HazardIdentifications.index') }}"><i
-                                                class="fa fa-circle-o"></i>HazardIdentification
-                                            Identification</a></li>
+                                    <li><a href="{{ route('hazard_identifications.index') }}"><i
+                                                class="fa fa-circle-o"></i>Hazard Identification</a></li>
                                     <li><a href="{{ route('job-requirements.index') }}"><i class="fa fa-circle-o"></i>Job
                                             Requirements</a></li>
                                     <li><a href="{{ route('ppe-requirements.index') }}"><i class="fa fa-circle-o"></i>PPE

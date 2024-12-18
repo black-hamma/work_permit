@@ -10,13 +10,13 @@ class HazardIdentificationController extends Controller
 
     public function index(Request $request)
     {
-        return $request->isMethod('post') ? $this->create($request) : view('hazard_identifications.index', ['hazard_identifications' => HazardIdentification::all()]);
+        return $request->isMethod('post') ? $this->create($request) : view('hazards.index', ['hazard_identifications' => HazardIdentification::all()]);
     }
     public function create($request)
     {
 
         $data = $request->validate([
-            'hazard_identifications' => 'required',
+            'hazard_identification' => 'required',
         ]);
 
         $HazardIdentification = HazardIdentification::create($data);
@@ -44,13 +44,13 @@ class HazardIdentificationController extends Controller
     {
 
         $data = $request->validate([
-            'hazard_identifications' => 'required',
+            'hazard_identification' => 'required',
         ]);
 
-        $hazard_identifications = HazardIdentification::findOrFail($id);
-        $hazard_identifications->HazardIdentification = $data['hazard_identifications'];
+        $hazard_identification = HazardIdentification::findOrFail($id);
+        $hazard_identification->hazard_identification = $data['hazard_identification'];
 
-        if ($hazard_identifications->update()) {
+        if ($hazard_identification->update()) {
 
             $notification = array(
                 'message' => 'Hazard Identification updated!',
@@ -62,9 +62,9 @@ class HazardIdentificationController extends Controller
     }
     public function destroy($id)
     {
-        $HazardIdentification = HazardIdentification::find($id);
+        $hazard_identification = HazardIdentification::find($id);
 
-        if ($HazardIdentification->delete()) {
+        if ($hazard_identification->delete()) {
 
             $notification = array(
                 'message' => 'Hazard Identification deleted!',

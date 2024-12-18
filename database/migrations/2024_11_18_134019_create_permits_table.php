@@ -16,8 +16,8 @@ class CreatePermitsTable extends Migration
         Schema::create('permits', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('job_location_id');
-            $table->unsignedBigInteger('department_id');
+            // $table->unsignedBigInteger('location_id');
+            // $table->unsignedBigInteger('department_id');
             $table->date('start_date');
             $table->date('end_date');
             $table->string('sub_location');
@@ -37,8 +37,6 @@ class CreatePermitsTable extends Migration
 
             // Correct foreign key references
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('job_location_id')->references('id')->on('job_locations')->onDelete('cascade');
-            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
             $table->timestamps();
         });

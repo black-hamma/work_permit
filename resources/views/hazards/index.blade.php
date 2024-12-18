@@ -8,13 +8,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            HazardIdentifications
+            Hazard Identifications
         </h1>
         <ol class="breadcrumb">
             <li>
                 <a href="#"><i class="fa fa-dashboard"></i> Home</a>
             </li>
-            <li class="active">HazardIdentifications</li>
+            <li class="active">Hazard Identifications</li>
         </ol>
     </section>
 
@@ -32,7 +32,7 @@
                                 <div class="col-md-8 col-md-offset-2">
 
                                     <div class="form-group">
-                                        <label for="hazard_identification">Hazard Iidentification</label>
+                                        <label for="hazard_identification">Hazard Identification</label>
                                         <input type="text"
                                             class="form-control{{ $errors->first('hazard_identification') ? ' form-error' : '' }}"
                                             name="hazard_identification" placeholder="Type Hazard Identification ..."
@@ -53,7 +53,7 @@
                                             <button type="submit" class="btn btn-sm btn-success pull-right">
                                                 <i class="fa fa-save" aria-hidden="true"
                                                     style="font-size: 12px !important; padding-right: 5px"></i>
-                                                <b>Add HazardIdentification</b>
+                                                <b>Add Hazard Identification</b>
                                             </button>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                     onclick="event.preventDefault(); if(confirm('Are you sure?')) document.getElementById('delete-form-{{ $hazard_identification->id }}').submit();"
                                     class="btn btn-danger btn-xs"><i class="fa fa-bitbucket"></i></a>
                                 <form id="delete-form-{{ $hazard_identification->id }}" +
-                                    action="{{ route('HazardIdentifications.destroy', $hazard_identification->id) }}"
+                                    action="{{ route('hazard_identifications.destroy', $hazard_identification->id) }}"
                                     method="POST">
                                     @csrf @method('DELETE')
                                 </form>
@@ -99,7 +99,7 @@
                 <div class="modal fade" id="edit_haz{{ $hazard_identification->id }}" tabindex="-1" role="dialog"
                     aria-labelledby="edit_haz_label">
                     <div class="modal-dialog modal-dialog-centered" role="document">
-                        <form action="{{ route('hazard_identification.update', $hazard_identification->id) }}"
+                        <form action="{{ route('hazard_identifications.update', $hazard_identification->id) }}"
                             method="POST">
                             @csrf
                             <div class="modal-content">
@@ -110,9 +110,9 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="form-group">
-                                        <input class="form-control" type="text" name="HazardIdentification"
+                                        <input class="form-control" type="text" name="hazard_identification"
                                             value="{{ $hazard_identification->hazard_identification }}"
-                                            placeholder="Type HazardIdentification name here ...">
+                                            placeholder="Type hazard identification name here ...">
                                     </div>
 
                                 </div>
