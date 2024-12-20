@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Permit extends Model
+class safetyPermit extends Model
 {
     use HasFactory;
 
@@ -33,7 +33,7 @@ class Permit extends Model
         'permit_code',
         'workers_names',
         'required_permits',
-        'HazardIdentification_identification',
+        'hazard_identification',
         'job_requirements',
         'ppe_requirements',
         'precautionary_measure',
@@ -60,7 +60,7 @@ class Permit extends Model
     }
     public function ppeRequirements()
     {
-        return $this->belongsToMany(PpeRequirement::class, 'job_requirement_permit');
+        return $this->belongsToMany(PpeRequirement::class, 'ppe_requirement_permit');
     }
     public function precautionaryMeasures()
     {

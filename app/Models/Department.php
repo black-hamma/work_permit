@@ -13,8 +13,8 @@ class Department extends Model
         'department'
     ];
 
-    public function permits()
+    public function safetyPermits()
     {
-        return $this->hasMany(Permit::class);
+        return $this->hasMany(safetyPermit::class);
     }
 }

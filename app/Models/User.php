@@ -48,8 +48,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function permits()
+    public function safetyPermits()
     {
-        return $this->hasMany(Permit::class);
+        return $this->hasMany(safetyPermit::class);
     }
 }

@@ -21,7 +21,7 @@ class CreateJobRequirementsTable extends Migration
 
         Schema::create('job_requirement_permit', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('permit_id')->constrained()->onDelete('cascade');
+            $table->foreignId('safety_permits_id')->constrained()->onDelete('cascade');
             $table->foreignId('job_requirement_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

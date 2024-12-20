@@ -13,8 +13,8 @@ class PpeRequirement extends Model
         'ppe_requirement',
     ];
 
-    public function permits()
+    public function safetyPermits()
     {
-        return $this->belongsToMany(Permit::class, 'ppe_requirement_permit');
+        return $this->belongsToMany(safetyPermit::class, 'ppe_requirement_permit');
     }
 }

@@ -14,9 +14,9 @@ class Location extends Model
     ];
 
     // One-to-Many Relationship
-    public function permits()
+    public function safetyPermits()
     {
-        return $this->hasMany(Permit::class);
+        return $this->hasMany(safetyPermit::class);
     }
 
 

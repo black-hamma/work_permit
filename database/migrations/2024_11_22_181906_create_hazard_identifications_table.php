@@ -21,7 +21,7 @@ class CreateHazardIdentificationsTable extends Migration
 
         Schema::create('hazard_identification_permit', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('permit_id')->constrained()->onDelete('cascade');
+            $table->foreignId('safety_permits_id')->constrained()->onDelete('cascade');
             $table->foreignId('hazard_identification_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

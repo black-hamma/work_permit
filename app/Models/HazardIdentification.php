@@ -11,8 +11,8 @@ class HazardIdentification extends Model
 
     protected $fillable = ['hazard_identification'];
 
-    public function permits()
+    public function safetyPermits()
     {
-        return $this->belongsToMany(Permit::class, 'hazard_identification_permit');
+        return $this->belongsToMany(safetyPermit::class, 'hazard_identification_permit');
     }
 }

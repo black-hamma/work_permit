@@ -13,8 +13,8 @@ class PrecautionaryMeasure extends Model
         "precautionary_measure"
     ];
 
-    public function permits()
+    public function safetyPermits()
     {
-        return $this->belongsToMany(Permit::class, 'job_requirement_permit');
+        return $this->belongsToMany(safetyPermit::class, 'job_requirement_permit');
     }
 }
